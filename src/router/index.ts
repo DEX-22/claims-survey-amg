@@ -11,7 +11,8 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: HomeView
+      component: HomeView,
+      redirect:{name:'auth'}
     },
     AuthRouter,
     SurveyRouter
