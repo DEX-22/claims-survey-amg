@@ -24,3 +24,16 @@ export interface QuestionI{
     
 
 }
+export interface AuthI{
+  state?:()=>{
+    token:string
+  },
+  setToken?: (token:string)=>void,
+
+}
+export interface SurveyViewsI{
+  INDEX: {name: string},
+  QUESTION: {name: string, params?:{id:number}},
+  EXPIRED: {name: string},
+  COMPLETED: {name: string},
+}
