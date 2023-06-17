@@ -75,7 +75,7 @@
   
   #app {
     max-width: 800px;
-    margin: 0 auto;
+    margin: 200px auto;
     padding: 20px 0px;
     text-align: center;
     color: #123D61;

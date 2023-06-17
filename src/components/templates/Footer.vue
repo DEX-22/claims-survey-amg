@@ -1,44 +1,75 @@
 <template lang="">
-<footer class="bg-gray-800 text-gray-300">
-  <div class="container mx-auto py-8 px-4">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-      <!-- Columna 1: Email -->
-      <div>
-        <h3 class="text-lg font-semibold mb-2">Email</h3>
-        <p>info@example.com</p>
-      </div>
-      <!-- Columna 2: Teléfono -->
-      <div>
-        <h3 class="text-lg font-semibold mb-2">Phone</h3>
-        <p>+1 234 567 890</p>
-      </div>
-      <!-- Columna 3: Horario de trabajo -->
-      <div>
-        <h3 class="text-lg font-semibold mb-2">Working Hours</h3>
-        <p>Mon-Fri: 9am-5pm</p>
-      </div>
-      <!-- Columna 4: Follow Us -->
-      <div>
-        <h3 class="text-lg font-semibold mb-2">Follow Us</h3>
-        <div class="flex space-x-2">
-          <a href="#" class="text-gray-300 hover:text-gray-400">
-            asd
-          </a>
-          <a href="#" class="text-gray-300 hover:text-gray-400">
-            asd
-          </a>
+
+  <footer class="footer">
+      <div class="footer__container">
+        <div class="footer__contact">
+          <div class="footer__email">
+            <h2 class="footer__email-title">EMAIL</h2>
+            <p class="footer__email-info">customer@amggroup.us</p>
+          </div>
+          <div class="footer__phone">
+            <h2 class="footer__phone-title">PHONE</h2>
+            <p class="footer__phone-info">(949) 375 - 1002</p>
+          </div>
+          <div class="footer__working">
+            <h2 class="footer__working-title">WORKING HOURS</h2>
+            <p class="footer__working-info">Monday to Saturday:</p>
+            <span>09:00 a.m. - 06:00 p.m.</span>
+          </div>
+          <div class="footer__follow">
+            <h2 class="footer__follow-title">FOLLOW US</h2>
+            <div>
+              <i>FB</i>
+              <i>IG</i>
+            </div>
+          </div>
+        </div>
+        <div class="footer__copyright">
+          <p>All Right Reserved.</p>
         </div>
       </div>
-    </div>
-    <p class="text-center mt-8">© 2023 AMG. Todos los derechos reservados.</p>
-  </div>
-</footer>
+  </footer>
 
 </template>
 <script>
-export default {
+export default {};
+</script>
+  <style>
+.footer {
+  background-color: #123d61;
+  color: white;
+}
+
+.footer__container{
 
 }
-</script>
-<style lang="">
+
+.footer__contact{
+  width: 80%;
+  display: grid;
+  /* padding: 1rem; */
+  grid-template-rows: repeat(1, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  padding: 50px 0;
+  margin: 0 auto;
+}
+
+.footer__email,.footer__phone,.footer__working,.footer__follow{
+  /* margin-left: 20px; */
+}
+
+.footer__email-title,.footer__phone-title,.footer__working-title,.footer__follow-title{
+  font-weight: bold;
+}
+
+.footer__copyright{
+  border-top: 1px solid white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 0;
+
+}
+
+
 </style>
