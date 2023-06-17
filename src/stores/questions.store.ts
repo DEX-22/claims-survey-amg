@@ -14,15 +14,18 @@ const state = ()=>{
 
 }
 const actions = {
-    setQuestions(question: QuestionI){
+    setQuestion(question: QuestionI){
         this.question = question
+    },
+    setQuestions(questions: QuestionI[]){
+        this.questions = [...questions]
     }
 
 }
 
 const getters = {
-    currentQuestion: ({question}:{question:QuestionI}) => question,
-    listQuestions: ({questions}:{questions:QuestionI[]})=>questions
+    getCurrent: ({question}:{question:QuestionI}) => question,
+    getAll: ({questions}:{questions:QuestionI[]})=>questions
 }
 
 

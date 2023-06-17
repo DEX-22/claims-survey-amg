@@ -1,6 +1,7 @@
 import Auth from "@/views/auth/Auth.vue"
 import Service from "@/services/index"
-import type {  ValidateAccessI,RouterPathI, SurveyViewsI } from "@/types/index"
+import { authStore } from "@/stores/auth.store"
+import type {  ValidateAccessI,RouterPathI, SurveyViewsI, AuthI } from "@/types/index"
 
 const SURVEY:SurveyViewsI = {
   INDEX: {name: 'survey-index',},
@@ -9,11 +10,18 @@ const SURVEY:SurveyViewsI = {
   COMPLETED: {name: 'survey-completed'},
 }
 
-const setToken = () => { 
-  let token = window.localStorage.getItem('token')
 
-  // if(!token)
+const setToken = (auth,token: string) => { 
+  let existsToken : string | null = window.localStorage.getItem('token')
+  
 
+  if(!existsToken)
+    window.localStorage.setItem('token',token)
+  
+  
+  auth.setToken(token)
+
+  
 
 }
 
@@ -29,10 +37,14 @@ export default {
         
       const client = await Service.validateAccess({id:to.params.id})
 
+      const auth = authStore()
+  
+
       if(!client.access && !client.status) next({name: 'not-found'})
       else if(client.access && client.status == 'PENDING'){
-        setToken()
+        setToken(auth,client.token)
         next(SURVEY['INDEX'])
+        
       }  
       else if(client.access && client.status == 'IN PROCESS') next(  SURVEY['QUESTION'])
       else if(!client.access && client.status == 'TIME EXPIRED') next(SURVEY['EXPIRED'])

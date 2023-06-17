@@ -16,8 +16,8 @@ class Service {
     }
   }
     async getQuestions() {
-      const result = await amgApi.get("/survey/get-questions");
-      return result;
+      const {data} = await amgApi.get("/survey/get-questions");
+      return data;
     }
 
 }
