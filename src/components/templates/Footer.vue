@@ -34,9 +34,9 @@
 <script>
 export default {};
 </script>
-  <style>
+  <style scoped>
 .footer {
-  background-color: #123d61;
+  background-color: #242C33;
   color: white;
 }
 
@@ -55,7 +55,7 @@ export default {};
 }
 
 .footer__email,.footer__phone,.footer__working,.footer__follow{
-  /* margin-left: 20px; */
+  padding: 10px 0;
 }
 
 .footer__email-title,.footer__phone-title,.footer__working-title,.footer__follow-title{

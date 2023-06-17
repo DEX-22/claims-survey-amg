@@ -1,4 +1,108 @@
 <template>
+  <div class="main">
+    <div class="main__container" v-if="listQuestions.length > 0">
+      <Question 
+        :detailsQuestion="listQuestions[indexQ]" 
+        :totalQuestions="listQuestions.length" 
+        :questionIndex="indexQ+1" 
+        :totalRate="totalRate"
+        />
+      <div class="main__wrapper-buttons">
+        <div class="main__paginate">
+          <button class="main__button" @click="changeQuestion(-1)">Prev</button>
+          <button class="main__button" @click="changeQuestion(1)">Next</button>
+        </div>
+        <div class="main__submit">
+          <button class="main__button btn-submit">Submit</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</template>
+
+<script>
+
+import Service from "../services/index";
+import Question from './Question.vue';
+
+export default {
+
+  components:{
+    Question,
+  },
+
+  data() {
+    return {
+      listQuestions: [],
+      totalRate: 5,
+      indexQ: 0,
+    }
+  },
+
+  async created() {
+    await this.getQuestions();
+  },
+
+  methods:{
+    async getQuestions() {
+      const  {data}  = await Service.getQuestions();
+      this.listQuestions = data;
+      // console.log(this.listQuestions.length)
+      // console.log(this.listQuestions);
+    },
+
+    changeQuestion(index) {
+        let new_index = this.indexQ + index;
+  
+        if (new_index < 0 || new_index >= this.listQuestions.length)
+          return;
+  
+        this.indexQ = new_index;
+      },
+
+  },
+
+}
+</script>
+
+<style scoped>
+
+.main{
+  height: 800px;
+  background: white;
+  box-shadow: 0px 0px 15px 0px #000000;
+  margin: 20px;
+  border-radius: 20px;
+  margin-top: -80px;
+}
+
+button{
+  background: lightblue;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 10px;
+}
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <template>
     <div id="app" :class="{ submitted: is_submitted }">
       <form>
         <h1>Give Your Feedback</h1>
@@ -19,11 +123,11 @@
 </template>
   
   <script>
-  import RatingFeedback from './RatingFeedback.vue';
+  import Question from './Question.vue';
   
   export default {
     components: {
-      RatingFeedback,
+      Question,
     },
     data() {
       return {
@@ -180,4 +284,4 @@
   }
   
   
-  </style>
+  </style> -->

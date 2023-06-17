@@ -1,4 +1,67 @@
 <template>
+    <div>
+      <h2>Question {{ questionIndex }}</h2>
+      <h3>{{ detailsQuestion.question }}</h3>
+      <p>total de preguntas : {{totalQuestions}}</p>
+      <span> respuesta seleccionada: {{ detailsQuestion.rate }}</span>
+      <ul>
+        <li v-for="i in totalRate" :key="i">
+          <label>
+            <input type="radio" v-model="detailsQuestion.rate" :value="i" name="question-rate">
+            <span> indice : {{ i }}</span>
+          </label>
+        </li>
+      </ul>
+
+    </div>
+</template>
+<script>
+  export default {
+    props: ['detailsQuestion', 'questionIndex', 'totalRate', 'totalQuestions'],
+    data() {
+      return {
+        
+      }
+    },
+    created() {
+      // console.log(this.detailsQuestion)
+    },
+  };
+</script>
+
+<style scoped>
+  *{
+    margin: 10px;
+  }
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <template>
     <div class="question_wrapper">
       <h3 v-html="details.question"></h3>
       <ul>
@@ -10,7 +73,7 @@
         </li>
       </ul>
     </div>
-  </template>
+</template>
   
   <script>
   export default {
@@ -85,4 +148,4 @@
     opacity: 1;
   }
   </style>
-  
+   -->

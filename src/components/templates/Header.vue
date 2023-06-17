@@ -7,7 +7,7 @@
               <span class="header__lenguages-en">EN</span>
             </div>
             <div class="header__content">
-              <h1 class="header__title">ENCUESTA DE SATISFACCIÓN</h1>
+              <h1 class="header__title">SATISFACTION SURVEY</h1>
               <span class="header__content-line line-short"></span>
               <p class="header__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
               <span class="header__content-line line-long"></span>
@@ -24,6 +24,7 @@
   background-size: cover;
   background-image: url("https://f.hubspotusercontent20.net/hubfs/2639771/Improving%20Your%20Software%20Quality%20Assurance%20Process%20in%202021.png");
   position:relative;
+  z-index: -1;
 }
 
 
@@ -31,7 +32,7 @@
   position: absolute;
   content:"";
   inset:0;
-  background-color: rgba(0,0,0,.80);
+  background-color: rgba(0, 0, 0, 0.7);
   
 }
 
