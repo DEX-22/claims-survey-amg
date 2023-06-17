@@ -14,9 +14,9 @@ export default {
       const client = await Service.validateAccess({id:to.params.id})
 
       if(!client.access && !client.status) next({name: 'not-found'})
-      else if(!client.access && client.status == 'COMPLETED') next({name: 'survey-completed'})
       else if(client.access && client.status == 'PENDING') next({name:'survey-index'})
       else if(client.access && client.status == 'IN PROCESS') next(  {name: 'survey-question',params:{id: 1}})
+      else if(!client.access && client.status == 'COMPLETED') next({name: 'survey-completed'})
       else next({name: 'not-found'})
               
   

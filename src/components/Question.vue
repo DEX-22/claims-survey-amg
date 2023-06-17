@@ -3,8 +3,11 @@
         esta es la pregunta {{id}}
     </h2>
     <!-- <button @click="goToNextQuestion"> -->
-        <RouterLink :to="`/survey/question/${parseInt(id)+1}`">
-            asdas
+        <RouterLink class="btn blue" :to="`/survey/question/${parseInt(id)-1}`">
+            Prev 
+        </RouterLink>
+        <RouterLink class="btn blue" :to="`/survey/question/${parseInt(id)+1}`">
+            Next 
         </RouterLink>
 
     <!-- </button> -->
@@ -27,3 +30,6 @@ export default{
 }
 
 </script>
+<style scoped>
+
+</style>

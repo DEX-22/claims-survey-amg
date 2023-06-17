@@ -16,3 +16,11 @@ export interface RouterPathI {
             id: number 
           }
 }
+export interface QuestionI{
+  
+    id: number,
+    question: string,
+    result: number,
+    
+
+}
