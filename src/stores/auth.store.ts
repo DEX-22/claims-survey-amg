@@ -21,7 +21,7 @@ const actions: AuthI = {
 }
 
 const getters = {
-    getToken: ({token}:{token:string}) => token,
+    isLogged: ({token}:{token:string}) => !!token,
     
 }
 

@@ -1,8 +1,8 @@
 <template>
     
-    <RouterLink class="btn green" @click="startSurvey" :to="{name:'survey-questions'}" > 
+    <button class="btn green" @click="startSurvey" > 
         start survey
-    </RouterLink>
+    </button>
     
     
 </template>
@@ -26,6 +26,8 @@ export default{
                     result: null
                 }
             )
+
+            this.$router.push({name:'survey-questions'})
       }
     },
     mounted(){
@@ -35,9 +37,6 @@ export default{
 
     },
     computed:{
-        questions () {
-            return this.questions
-        }
     }
 
 }

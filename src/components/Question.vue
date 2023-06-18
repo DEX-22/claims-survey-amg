@@ -3,28 +3,55 @@
         esta es la pregunta {{id}}
     </h2>
     <!-- <button @click="goToNextQuestion"> -->
-        <RouterLink class="btn blue" :to="`/survey/question/${parseInt(id)-1}`">
+        <button @click="goTo('prev')" :disabled="id == 0" class="btn blue" >
             Prev 
-        </RouterLink>
-        <RouterLink class="btn blue" :to="`/survey/question/${parseInt(id)+1}`">
+        </button>
+        <button @click="goTo('next')" :disabled="id == totalPages" class="btn blue" >
             Next 
-        </RouterLink>
+        </button>
 
     <!-- </button> -->
 </template>
 <script lang="ts">
 
+import { questionsStore } from '@/stores/questions.store'
+
 export default{
     methods:{
-        goToNextQuestion(){
-            // console.table(this.$router.push)
-            this.$router.go(2) //push({name:'survey-question',params: 2})
-        }
+        goTo(page : string){
+            
+            if(page == 'next')
+                this.$router.push({name:'survey-question',params:this.nextPage})
+            else
+                this.$router.push({name:'survey-question',params:this.prevPage})
+
+
+
+        },
     },
     computed:{
         id(){
             
-            return this.$route.params.id
+            return parseInt(this.$route.params.id)
+        },
+        totalPages(){
+            return questionsStore().count
+        },
+        nextPage(){
+
+            const param = {
+                id: this.id == this.totalPages ? this.id : (this.id+1)
+            }
+
+            return param
+        },
+        prevPage(){
+            
+            const param = {
+                id: this.id == 0 ? this.id : (this.id-1)
+            }
+
+            return param
         }
     }
 }

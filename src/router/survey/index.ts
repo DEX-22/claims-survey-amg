@@ -58,6 +58,7 @@ export default{
             path:'questions',
             name:'survey-questions',
             component: Questions,
+            redirect:{name:'survey-question',params:{id:1}},
             children:[
                 {
 

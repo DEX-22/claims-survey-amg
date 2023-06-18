@@ -25,7 +25,9 @@ const actions = {
 
 const getters = {
     getCurrent: ({question}:{question:QuestionI}) => question,
-    getAll: ({questions}:{questions:QuestionI[]})=>questions
+    getAll: ({questions}:{questions:QuestionI[]})=>questions,
+    count: ({questions}:{questions:QuestionI[]})=>questions.length,
+    
 }
 
 
