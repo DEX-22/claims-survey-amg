@@ -5,7 +5,7 @@
         :detailsQuestion="listQuestions[indexQ]" 
         :totalQuestions="listQuestions.length" 
         :questionIndex="indexQ+1" 
-        :totalRate="totalRate"
+        :qualifications="qualifications"
         />
       <div class="main__wrapper-buttons">
         <div class="main__paginate">
@@ -35,7 +35,13 @@ export default {
   data() {
     return {
       listQuestions: [],
-      totalRate: 5,
+      qualifications: [
+        { id : 1, text : "Terrible"},
+        { id : 2, text : "Bad"},
+        { id : 3, text : "Regular"},
+        { id : 4, text : "Good"},
+        { id : 5, text : "Excellent"},
+      ],
       indexQ: 0,
     }
   },
@@ -48,8 +54,6 @@ export default {
     async getQuestions() {
       const  {data}  = await Service.getQuestions();
       this.listQuestions = data;
-      // console.log(this.listQuestions.length)
-      // console.log(this.listQuestions);
     },
 
     changeQuestion(index) {

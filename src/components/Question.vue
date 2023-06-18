@@ -1,23 +1,18 @@
 <template>
-    <div>
-      <h2>Question {{ questionIndex }}</h2>
-      <h3>{{ detailsQuestion.question }}</h3>
-      <p>total de preguntas : {{totalQuestions}}</p>
-      <span> respuesta seleccionada: {{ detailsQuestion.rate }}</span>
-      <ul>
-        <li v-for="i in totalRate" :key="i">
-          <label>
-            <input type="radio" v-model="detailsQuestion.rate" :value="i" name="question-rate">
-            <span> indice : {{ i }}</span>
-          </label>
-        </li>
-      </ul>
-
-    </div>
+    <div class="quuestion">
+      <div class="question__content-text">
+        <h2 class="question__number">Question {{ questionIndex }}</h2>
+        <h3 class="question__title">{{ detailsQuestion.question }}</h3>
+      </div>
+        <div class="question__qualifications" v-for="qualification in qualifications" :key="qualification.id">
+              <input :class="`question__qualification-id image-qualification-${qualification.id}`"  type="radio" v-model="detailsQuestion.rate" :value="qualification.id">
+              <span class="question__qualification-text"> {{ qualification.text }}</span>
+        </div>
+      </div>
 </template>
 <script>
   export default {
-    props: ['detailsQuestion', 'questionIndex', 'totalRate', 'totalQuestions'],
+    props: ['detailsQuestion', 'questionIndex', 'qualifications', 'totalQuestions'],
     data() {
       return {
         
@@ -33,6 +28,40 @@
   *{
     margin: 10px;
   }
+
+  .question__qualification-id {
+  height: 50px;
+}
+
+.question__qualification-id:checked {
+  background-color: darkorange;
+  filter: brightness(80%);
+}
+
+.question__qualification-id::before {
+  content: "";
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  background-size: cover;
+  background-position: center;
+}
+
+.image-qualification-1::before {
+  background-image: url("../assets/images/qualifications/1.svg");
+}
+.image-qualification-2::before {
+  background-image: url("../assets/images/qualifications/2.svg");
+}
+.image-qualification-3::before {
+  background-image: url("../assets/images/qualifications/3.svg");
+}
+.image-qualification-4::before {
+  background-image: url("../assets/images/qualifications/4.svg");
+}
+.image-qualification-5::before {
+  background-image: url("../assets/images/qualifications/5.svg");
+}
 </style>
 
 
