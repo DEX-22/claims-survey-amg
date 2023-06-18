@@ -1,25 +1,26 @@
 <template>
-
-<!-- <Header></Header> -->
-    <h2>SURVEY</h2>
-    <RouterView />
-
-
-<!-- <Questions></Questions> -->
+    <Header></Header>
+    <MainSurvey></MainSurvey>
+    <Footer></Footer>
 </template>
 
 
-
-
 <script lang="ts">
+
 import Header from '@/components/templates/Header.vue';
-import Questions from '@/components/Questions.vue';
+import Footer from '@/components/templates/Footer.vue';
+import MainSurvey from '@/components/MainSurvey.vue';
 export default {
     components: {
     Header,
-    Questions,
+    MainSurvey,
+    Footer,
     }
 }
 
 
 </script>
+
+<style scoped>
+</style>
+
