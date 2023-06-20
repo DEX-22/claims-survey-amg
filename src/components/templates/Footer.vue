@@ -18,9 +18,9 @@
           </div>
           <div class="footer__follow">
             <h2 class="footer__follow-title">FOLLOW US</h2>
-            <div>
-              <i>FB</i>
-              <i>IG</i>
+            <div class="footer__socials">
+              <a href="#"><img src="../../assets/images/icon-facebook.svg" alt="facebook amg"></a>
+              <a href="#"><img src="../../assets/images/icon-instagram.svg" alt="instagram amg"></a>
             </div>
           </div>
         </div>
@@ -32,11 +32,14 @@
 
 </template>
 <script>
+
+
+
 export default {};
 </script>
   <style scoped>
 .footer {
-  background-color: #242C33;
+  background-color: var(--color--blue-dark);
   color: white;
 }
 
@@ -62,6 +65,19 @@ export default {};
   font-weight: bold;
 }
 
+.footer__icons{
+  display: flex;
+}
+
+.footer__socials{
+  display: flex;
+  margin-top: 5px;
+}
+
+.footer__socials a{
+  margin-right: 10px;
+}
+
 .footer__copyright{
   border-top: 1px solid white;
   display: flex;
@@ -70,6 +86,5 @@ export default {};
   padding: 30px 0;
 
 }
-
 
 </style>

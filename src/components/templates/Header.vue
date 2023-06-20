@@ -22,7 +22,7 @@
   height: 465px;
   background-position: center;
   background-size: cover;
-  background-image: url("https://f.hubspotusercontent20.net/hubfs/2639771/Improving%20Your%20Software%20Quality%20Assurance%20Process%20in%202021.png");
+  background-image: url("../../assets/images/background-header.png");
   position:relative;
   z-index: -1;
 }
@@ -31,9 +31,10 @@
 .header::before{
   position: absolute;
   content:"";
-  inset:0;
-  background-color: rgba(0, 0, 0, 0.7);
-  
+  background-image: url("../../assets/images/border-header.png");
+  background-position: center;
+  background-size: cover;
+  inset: 30px 0;
 }
 
 .header__grid{
@@ -100,6 +101,45 @@
   border: 1px solid white;
   margin: 40px 0 0 0;
 }
+
+
+
+/* // Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) { }
+
+/* // Large devices (desktops, 992px and up) */
+@media (min-width: 992px) { 
+  .header {
+    height: 610px;
+    background-image: url("../../assets/images/background-header-full.png");
+    position:relative;
+    z-index: -1;
+  }
+
+
+  .header::before{
+    position: absolute;
+    content:"";
+    /* background-image: url("../../assets/images/border-header-full.png"); */
+    background-color: #052659df;
+    inset: 0;
+  }
+
+  .header__grid{      
+    place-items: center;
+    grid-template-rows: none;
+    grid-template-columns:  10% 90%;
+  }
+
+  .header__content{
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+ }
+
+/* // Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {  }
 
 
 </style>
