@@ -96,7 +96,7 @@ import { questionsStore } from '@/stores/questions.store'
 }
 .question__qualifications__container{
     display: flex;
-    flex-direction: raw;
+    flex-direction: row;
     justify-content: center;
 }
   .question__qualification-id {

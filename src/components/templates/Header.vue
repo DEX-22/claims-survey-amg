@@ -1,9 +1,9 @@
 <template>
     <header class="header">
-        <div class="header__grid">
+          <div class="header__grid">
             <div class="header__lenguages">
               <span class="header__lenguages-es language-focus">ES</span>
-              <span>/</span>
+              <span class="header__lenguages-separator">/</span>
               <span class="header__lenguages-en">EN</span>
             </div>
             <div class="header__content">
@@ -23,23 +23,12 @@
   background-position: center;
   background-size: cover;
   background-image: url("../../assets/images/background-header.png");
-  position:relative;
+  /* position: relative; */
   z-index: -1;
-}
-
-
-.header::before{
-  position: absolute;
-  content:"";
-  background-image: url("../../assets/images/border-header.png");
-  background-position: center;
-  background-size: cover;
-  inset: 30px 0;
 }
 
 .header__grid{
     height: 100%;
-    position:relative;
     color: white;
     display: grid;
     justify-content: center;
@@ -79,14 +68,15 @@
 .header__title{
   font-size: 30px;
   font-weight: bold;
+  /* margin-bottom: 21px; */
 }
 
 .header__text{
   font-size: 16px;
+  /* margin-top: 10px; */
 }
 
 .header__content-line{
-  width: 100px;
   border: 1px solid white;
   margin: 5px 0;
 }
@@ -109,6 +99,12 @@
 
 /* // Large devices (desktops, 992px and up) */
 @media (min-width: 992px) { 
+
+ }
+
+/* // Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) { 
+
   .header {
     height: 610px;
     background-image: url("../../assets/images/background-header-full.png");
@@ -120,8 +116,9 @@
   .header::before{
     position: absolute;
     content:"";
-    /* background-image: url("../../assets/images/border-header-full.png"); */
-    background-color: #052659df;
+    background-image: url("../../assets/images/border-header-full.png");
+    background-position: 20 0 0 0;
+    background-size: cover;
     inset: 0;
   }
 
@@ -133,13 +130,56 @@
 
   .header__content{
   max-width: 800px;
-  margin: 0 auto;
+  margin: 0 0 0 -80px;
 }
 
- }
 
-/* // Extra large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) {  }
+.header__lenguages{
+  width: 80%;
+  margin: 0 auto;
+  font-size: 25px;
+  flex-direction: column;
+}
+
+.header__lenguages-separator{
+  display: none;
+}
+
+.header__lenguages span{
+  margin: 2px;
+}
+
+
+
+.header__title{
+  font-size: 54px;
+  margin-bottom: 27px;
+}
+/* TODO */
+.header__text{
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+.header__content-line{
+  border: 1px solid white;
+  margin: 5px 0;
+}
+
+.line-short{
+  width: 50px;
+  margin: 5px 0;
+}
+
+.line-long{
+  width: 90%;
+  margin: 40px 0;
+}
+
+
+
+
+ }
 
 
 </style>
