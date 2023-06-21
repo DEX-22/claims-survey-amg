@@ -1,14 +1,16 @@
 <template>
-    <div class="quuestion">
+    <div class="question">
       <div class="question__content-text">
         <h2 class="question__number">Question {{ questionIndex }}</h2>
         <h3 class="question__title">{{ detailsQuestion.question }}</h3>
       </div>
+        <div class="question__qualifications__container">
         <div class="question__qualifications" v-for="qualification in qualifications" :key="qualification.id">
               <input :class="`question__qualification-id image-qualification-${qualification.id}`"  type="radio" v-model="detailsQuestion.rate" :value="qualification.id">
               <span class="question__qualification-text"> {{ qualification.text }}</span>
         </div>
       </div>
+    </div>
 </template>
 <script lang="ts">
 
@@ -74,7 +76,29 @@ import { questionsStore } from '@/stores/questions.store'
   *{
     margin: 10px;
   }
+  .question{
+      display: flex;
+      flex-direction: column;
+      justify-content: center; 
+  }
+  .question__qualifications{
+        display: flex;
+    flex-direction:column ;
 
+}
+.question__number{
+  font-size: 32px;
+  text-align: center;
+}
+.question__title{
+  font-size: 24px;
+  text-align: center;
+}
+.question__qualifications__container{
+    display: flex;
+    flex-direction: raw;
+    justify-content: center;
+}
   .question__qualification-id {
     width: 50px;
   height: 50px;
@@ -92,22 +116,43 @@ import { questionsStore } from '@/stores/questions.store'
   height: 50px;
   background-size: cover;
   background-position: center;
+  cursor: pointer;
 }
 
 .image-qualification-1::before {
   background-image: url("../assets/images/qualifications/1.svg");
 }
+.image-qualification-1:hover::before {
+  width: 55px;
+  height: 55px;
+}
 .image-qualification-2::before {
   background-image: url("../assets/images/qualifications/2.svg");
+}
+.image-qualification-2:hover::before {
+  width: 55px;
+  height: 55px;
 }
 .image-qualification-3::before {
   background-image: url("../assets/images/qualifications/3.svg");
 }
+.image-qualification-3:hover::before {
+  width: 55px;
+  height: 55px;
+}
 .image-qualification-4::before {
   background-image: url("../assets/images/qualifications/4.svg");
 }
+.image-qualification-4:hover::before {
+  width: 55px;
+  height: 55px;
+}
 .image-qualification-5::before {
   background-image: url("../assets/images/qualifications/5.svg");
+}
+.image-qualification-5:hover::before {
+  width: 55px;
+  height: 55px;
 }
 </style>
 

@@ -1,6 +1,10 @@
 <template>
     <Header></Header>
-    <MainSurvey></MainSurvey>
+    <!-- <MainSurvey></MainSurvey> -->
+    <!-- <div class="h-36"> -->
+        <RouterView />
+    <!-- </div> -->
+    
     <Footer></Footer>
 </template>
 

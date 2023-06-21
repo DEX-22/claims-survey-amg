@@ -5,7 +5,7 @@ import type {  ValidateAccessI,RouterPathI, SurveyViewsI, AuthI } from "@/types/
 
 const SURVEY:SurveyViewsI = {
   INDEX: {name: 'survey-index',},
-  QUESTION: {name: 'survey-question',params:{id: 1}},
+  QUESTION: {name: 'survey-questions'},
   EXPIRED: {name: 'survey-expired',},
   COMPLETED: {name: 'survey-completed'},
 }

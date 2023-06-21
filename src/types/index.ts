@@ -8,7 +8,7 @@ export interface MyAxiosInstance {
 }
 
 export interface ValidateAccessI {
-  id: string
+  id: string,
 }
 export interface RouterPathI {
   name: string, 

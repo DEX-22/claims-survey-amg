@@ -5,12 +5,9 @@ import AuthRouter from '@/router/auth/index'
 import SurveyRouter from '@/router/survey/index'
 import ErrorRouter from '@/router/error/index'
 
-//views
-import HomeView from '@/views/HomeView.vue'
-import SurveyExpired from '@/views/survey/SurveyExpired.vue'
-
 //store
 import { authStore } from '@/stores/auth.store'
+import { RouterPathI, ValidateAccessI } from '@/types/index'
 
 
 const router = createRouter({
@@ -19,19 +16,19 @@ const router = createRouter({
     {
       path: '/',
       name: 'only-home',
-      component: HomeView,
+      component: ()=> import('@/views/HomeView.vue'),
       redirect:{name:'not-found'}
     },
     {
       path: '/:some',
       name: 'home',
-      component: HomeView,
+      component: ()=> import('@/views/HomeView.vue'),
       redirect:{name:'not-found'}
     },
     {
       path:'/time-expired',
       name: 'survey-expired',
-      component: SurveyExpired,
+      component: ()=>import('@/views/survey/SurveyExpired.vue'),
     },
     ErrorRouter,
     AuthRouter,
@@ -39,15 +36,20 @@ const router = createRouter({
   ]
 })
 
-// router.beforeEach((to, from, next)=>{
+router.beforeEach((to: { params: ValidateAccessI,name? : string }, from: {name? : string})=>{
 
-//   let page = undefined 
-//   const store = authStore()
+  let page = undefined 
+  const store = authStore()
 
-//   if ( !store.isLogged )  next({ path: '/not-found', replace: true})
+  // console.log();
   
-//   next();
+
+  if ( to.name === 'auth' )  return true
+
+  if ( from.name === 'survey-completed' )  return false
+    
+  if(to.name != 'not-found' &&  !store.isLogged ) return {name:'not-found'}
   
-//   })
+  })
 
 export default router

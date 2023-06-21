@@ -13,7 +13,7 @@
           <button class="main__button" @click="changeQuestion(1)">Next</button>
         </div>
         <div class="main__submit">
-          <button class="main__button btn-submit">Submit</button>
+          <button @click="sendSurvey" class="main__button btn-submit">Submit</button>
         </div>
       </div>
 
@@ -22,6 +22,7 @@
 </template>
 
 <script>
+import {questionsStore} from '@/stores/questions.store'
 
 import Service from "../services/index";
 import Question from './Question.vue';
@@ -46,14 +47,15 @@ export default {
     }
   },
 
-  async created() {
-    await this.getQuestions();
+  created() {
+    this.getQuestions();
   },
 
   methods:{
-    async getQuestions() {
-      const  {data}  = await Service.getQuestions();
-      this.listQuestions = data;
+    getQuestions() {
+      console.log(questionsStore().questions);
+      
+      this.listQuestions = questionsStore().getAll;
     },
 
     changeQuestion(index) {
@@ -64,6 +66,11 @@ export default {
   
         this.indexQ = new_index;
       },
+    sendSurvey(){
+     
+        this.$router.push({name: 'survey-completed'})
+
+    }
 
   },
 
@@ -73,7 +80,7 @@ export default {
 <style scoped>
 
 .main{
-  height: 800px;
+  height: 400px;
   background: white;
   box-shadow: 0px 0px 15px 0px #000000;
   margin: 20px;
@@ -81,11 +88,40 @@ export default {
   margin-top: -80px;
 }
 
-button{
+.main__paginate button{
   background: lightblue;
-  padding: 10px;
-  margin: 10px;
+  padding: 12px 20px;
+  margin: 12px 20px;
   border-radius: 10px;
+
+}
+
+.main__container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.main__paginate{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.main__submit{
+  text-align: center;
+  
+}
+.btn-submit{
+
+  background: green;
+  border-radius: 15px;
+  color: #FFF;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-align: center;
+  width: 200px;
+  padding: 12px 20px;
+  margin: 12px 20px;
 }
 </style>
 
