@@ -1,7 +1,7 @@
 <template>
     <div class="question">
       <div class="question__content-text">
-        <h2 class="question__number">Question {{ questionIndex }}</h2>
+        <h2 class="question__number">Question {{ detailsQuestion.id }}</h2>
         <h3 class="question__title">{{ detailsQuestion.question }}</h3>
       </div>
         <div class="question__qualifications__container">
@@ -14,12 +14,12 @@
 </template>
 <script lang="ts">
 
-import { questionsStore } from '@/stores/questions.store'
+// import { questionsStore } from '@/stores/questions.store'
 
 
 
   export default {
-    props: ['detailsQuestion', 'questionIndex', 'qualifications', 'totalQuestions'],
+    props: ['detailsQuestion', 'qualifications', 'totalQuestions'],
     data() {
       return {
         
@@ -29,41 +29,10 @@ import { questionsStore } from '@/stores/questions.store'
       // console.log(this.detailsQuestion)
     },
     methods:{
-        goTo(page : string){
-            
-            if(page == 'next')
-                this.$router.push({name:'survey-question',params:this.nextPage})
-            else
-                this.$router.push({name:'survey-question',params:this.prevPage})
 
-
-
-        },
     },
     computed:{
-        id(){
-            
-            return parseInt(this.$route.params.id)
-        },
-        totalPages(){
-            return questionsStore().count
-        },
-        nextPage(){
 
-            const param = {
-                id: this.id == this.totalPages ? this.id : (this.id+1)
-            }
-
-            return param
-        },
-        prevPage(){
-            
-            const param = {
-                id: this.id == 0 ? this.id : (this.id-1)
-            }
-
-            return param
-        }
     }
   };
 

@@ -4,20 +4,14 @@
       <Question 
         v-for="(q,id) in listQuestions" :key="id"
         :detailsQuestion="listQuestions[id]" 
-        :totalQuestions="listQuestions.length" 
-        :questionIndex="indexQ+1" 
+        :totalQuestions="listQuestions.length"
         :qualifications="qualifications"
         />
       <div class="main__wrapper-buttons">
-        <div class="main__paginate">
-          <button class="main__button" @click="changeQuestion(-1)">Prev</button>
-          <button class="main__button" @click="changeQuestion(1)">Next</button>
-        </div>
         <div class="main__submit">
           <button @click="sendSurvey" class="main__button btn-submit">Submit</button>
         </div>
       </div>
-
     </div>
   </div>
 </template>
@@ -59,17 +53,10 @@ export default {
       this.listQuestions = questionsStore().getAll;
     },
 
-    changeQuestion(index) {
-        let new_index = this.indexQ + index;
-  
-        if (new_index < 0 || new_index >= this.listQuestions.length)
-          return;
-  
-        this.indexQ = new_index;
-      },
     sendSurvey(){
      
-        this.$router.push({name: 'survey-completed'})
+        // this.$router.push({name: 'survey-completed'})
+        console.log(this.listQuestions)
 
     }
 
