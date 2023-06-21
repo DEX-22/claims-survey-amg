@@ -2,7 +2,8 @@
   <div class="main">
     <div class="main__container" v-if="listQuestions.length > 0">
       <Question 
-        :detailsQuestion="listQuestions[indexQ]" 
+        v-for="(q,id) in listQuestions" :key="id"
+        :detailsQuestion="listQuestions[id]" 
         :totalQuestions="listQuestions.length" 
         :questionIndex="indexQ+1" 
         :qualifications="qualifications"
@@ -80,7 +81,7 @@ export default {
 <style scoped>
 
 .main{
-  height: 400px;
+  
   background: white;
   box-shadow: 0px 0px 15px 0px #000000;
   margin: 20px;
