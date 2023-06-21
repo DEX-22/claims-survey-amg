@@ -35,11 +35,15 @@
 
 
 
-export default {};
+export default {
+  
+};
 </script>
   <style scoped>
 .footer {
-  background-color: var(--color--blue-dark);
+  background-image: url('../../assets/images/background-footer-mobile.png');
+  background-position: center;
+  background-size: cover;
   color: white;
 }
 
@@ -84,6 +88,37 @@ export default {};
   align-items: center;
   justify-content: center;
   padding: 30px 0;
+
+}
+
+
+
+@media (min-width: 1200px) { 
+
+
+  .footer {
+  background-image: url('../../assets/images/background-footer-desktop.png');
+}
+
+
+.footer__container{
+
+}
+
+.footer__contact{
+}
+
+.footer__email,.footer__phone,.footer__working,.footer__follow{
+
+}
+
+.footer__email-title,.footer__phone-title,.footer__working-title,.footer__follow-title{
+  font-size: 20px;
+}
+
+.footer__email-info,.footer__phone-info,.footer__working-info,.footer__follow-info{
+  font-size: 20px;
+}
 
 }
 
