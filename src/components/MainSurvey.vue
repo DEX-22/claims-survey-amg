@@ -74,6 +74,8 @@ export default {
   margin: 20px;
   border-radius: 20px;
   margin-top: -80px;
+  padding-right: 20px;
+  padding-left: 20px;
 }
 
 .main__paginate button{

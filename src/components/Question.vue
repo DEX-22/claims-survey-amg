@@ -4,9 +4,9 @@
         <h2 class="question__number">Question {{ detailsQuestion.id }}</h2>
         <h3 class="question__title">{{ detailsQuestion.question }}</h3>
       </div>
-        <div class="question__qualifications__container">
+        <div class="question__qualifications-container">
         <div class="question__qualifications" v-for="qualification in qualifications" :key="qualification.id">
-              <input :class="`question__qualification-id image-qualification-${qualification.id}`"  type="radio" v-model="detailsQuestion.rate" :value="qualification.id">
+            <input :class="`question__qualification-id image-qualification-${qualification.id}`"  type="radio" v-model="detailsQuestion.rate" :value="qualification.id">
               <span class="question__qualification-text"> {{ qualification.text }}</span>
         </div>
       </div>
@@ -42,35 +42,47 @@
 </script>
 
 <style scoped>
-  *{
+  /* *{
     margin: 10px;
-  }
-  .question{
-      display: flex;
-      flex-direction: column;
-      justify-content: center; 
-  }
-  .question__qualifications{
-        display: flex;
-    flex-direction:column ;
+  } */
+.question{
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+}
+.question__qualifications-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+.question__qualifications{
+  display: flex;
+  flex-direction:column;
+  align-items: center;
 
 }
 .question__number{
-  font-size: 32px;
+  margin: 44px auto 10px auto;
+  font-size: 16px;
   text-align: center;
+  font-weight: bold;
 }
 .question__title{
-  font-size: 24px;
+  font-size: 16px;
   text-align: center;
+  margin-bottom: 18px;
+
 }
-.question__qualifications__container{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+
+
+.question__qualification-id {
+  width: 32px;
+  height: 32px;
+    background: lightcoral;
 }
-  .question__qualification-id {
-    width: 50px;
-  height: 50px;
+
+.question__qualification-text{
+  font-size: 12px;
 }
 
 .question__qualification-id:checked {
@@ -81,8 +93,8 @@
 .question__qualification-id::before {
   content: "";
   display: inline-block;
-  width: 50px;
-  height: 50px;
+  width: 32px;
+  height: 32px;
   background-size: cover;
   background-position: center;
   cursor: pointer;
@@ -91,38 +103,38 @@
 .image-qualification-1::before {
   background-image: url("../assets/images/qualifications/1.svg");
 }
-.image-qualification-1:hover::before {
+/* .image-qualification-1:hover::before {
   width: 55px;
   height: 55px;
-}
+} */
 .image-qualification-2::before {
   background-image: url("../assets/images/qualifications/2.svg");
 }
-.image-qualification-2:hover::before {
+/* .image-qualification-2:hover::before {
   width: 55px;
   height: 55px;
-}
+} */
 .image-qualification-3::before {
   background-image: url("../assets/images/qualifications/3.svg");
 }
-.image-qualification-3:hover::before {
+/* .image-qualification-3:hover::before {
   width: 55px;
   height: 55px;
-}
+} */
 .image-qualification-4::before {
   background-image: url("../assets/images/qualifications/4.svg");
 }
-.image-qualification-4:hover::before {
+/* .image-qualification-4:hover::before {
   width: 55px;
   height: 55px;
-}
+} */
 .image-qualification-5::before {
   background-image: url("../assets/images/qualifications/5.svg");
 }
-.image-qualification-5:hover::before {
+/* .image-qualification-5:hover::before {
   width: 55px;
   height: 55px;
-}
+} */
 </style>
 
 
