@@ -23,7 +23,6 @@
   background-position: center;
   background-size: cover;
   background-image: url("../../assets/images/background-header.png");
-  /* position: relative; */
   z-index: -1;
 }
 
@@ -68,12 +67,10 @@
 .header__title{
   font-size: 30px;
   font-weight: bold;
-  /* margin-bottom: 21px; */
 }
 
 .header__text{
   font-size: 16px;
-  /* margin-top: 10px; */
 }
 
 .header__content-line{
@@ -95,11 +92,25 @@
 
 
 /* // Medium devices (tablets, 768px and up) */
-@media (min-width: 768px) { }
+@media (min-width: 768px) {
+  .header__title{
+  font-size: 35px;
+  /* margin-bottom: 24px; */
+  }
+
+ }
 
 /* // Large devices (desktops, 992px and up) */
 @media (min-width: 992px) { 
+  .header__title{
+  font-size: 40px;
+  margin-bottom: 24px;
+  }
 
+  .header__text{
+    font-size: 18px;
+    margin-top: 8px;
+  }
  }
 
 /* // Extra large devices (large desktops, 1200px and up) */
@@ -125,61 +136,56 @@
   .header__grid{      
     place-items: center;
     grid-template-rows: none;
-    grid-template-columns:  10% 90%;
+    grid-template-columns:  100px 1fr;
   }
 
   .header__content{
   max-width: 800px;
   margin: 0 0 0 -80px;
+  }
+
+
+  .header__lenguages{
+    width: 80%;
+    margin: 0 auto;
+    font-size: 25px;
+    flex-direction: column;
+  }
+
+  .header__lenguages-separator{
+    display: none;
+  }
+
+  .header__lenguages span{
+    margin: 2px;
+  }
+
+  .header__title{
+    font-size: 54px;
+    margin-bottom: 27px;
+  }
+
+  .header__text{
+    font-size: 20px;
+    margin-top: 10px;
+  }
+
+  .header__content-line{
+    border: 1px solid white;
+    margin: 5px 0;
+  }
+
+  .line-short{
+    width: 50px;
+    margin: 5px 0;
+  }
+
+  .line-long{
+    width: 90%;
+    margin: 40px 0;
+  }
+
 }
-
-
-.header__lenguages{
-  width: 80%;
-  margin: 0 auto;
-  font-size: 25px;
-  flex-direction: column;
-}
-
-.header__lenguages-separator{
-  display: none;
-}
-
-.header__lenguages span{
-  margin: 2px;
-}
-
-
-
-.header__title{
-  font-size: 54px;
-  margin-bottom: 27px;
-}
-/* TODO */
-.header__text{
-  font-size: 20px;
-  margin-top: 10px;
-}
-
-.header__content-line{
-  border: 1px solid white;
-  margin: 5px 0;
-}
-
-.line-short{
-  width: 50px;
-  margin: 5px 0;
-}
-
-.line-long{
-  width: 90%;
-  margin: 40px 0;
-}
-
-
-
-
- }
 
 
 </style>
