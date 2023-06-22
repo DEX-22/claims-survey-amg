@@ -47,6 +47,8 @@ router.beforeEach((to: { params: ValidateAccessI,name? : string }, from: {name? 
   if ( to.name === 'auth' )  return true
 
   if ( from.name === 'survey-completed' )  return false
+
+  if ( to.name === 'survey-start' && from.name === 'survey-questions'  )  return false
     
   if(to.name != 'not-found' &&  !store.isLogged ) return {name:'not-found'}
   

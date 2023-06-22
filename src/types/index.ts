@@ -37,3 +37,16 @@ export interface SurveyViewsI{
   EXPIRED: {name: string},
   COMPLETED: {name: string},
 }
+export interface AnswerI{
+  id: number,
+  question_id: number,
+  question: string,
+  rate? : number,
+}
+
+export interface SurveyI{
+  
+  survey_id: number,
+  answers: AnswerI[]
+
+}
