@@ -9,7 +9,7 @@
         />
       <div class="main__wrapper-buttons">
         <div class="main__submit">
-          <button @click="sendSurvey" class="main__button">Submit</button>
+          <button @click="sendSurvey" class="main__button">{{ $t('title-button-submit') }}</button>
         </div>
       </div>
     </div>
