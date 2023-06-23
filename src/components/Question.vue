@@ -4,17 +4,22 @@
         <h2 class="question__number">Question {{ detailsQuestion.id }}</h2>
         <h3 class="question__title">{{ detailsQuestion.question }}</h3>
       </div>
-        <div class="question__qualifications__container">
+        <div class="question__qualifications-container">
         <div class="question__qualifications" v-for="qualification in qualifications" :key="qualification.id">
-              <input :class="`question__qualification-id image-qualification-${qualification.id}`"  type="radio" v-model="detailsQuestion.rate" :value="qualification.id">
-              <span class="question__qualification-text"> {{ qualification.text }}</span>
+              <div class="question__qualification-container">
+                <input type="radio" v-model="detailsQuestion.rate" :value="qualification.id">
+                <div class="question__qualification-tile">
+                  <font-awesome-icon :icon="qualification.icon" class="question__qualification-icon" />
+                </div>
+              </div>
+              <span class="question__qualification-text">{{ qualification.text }}</span>
         </div>
       </div>
     </div>
 </template>
 <script lang="ts">
 
-// import { questionsStore } from '@/stores/questions.store'
+// import { questionsStore } from '@/stores/questions.store';
 
 
 
@@ -42,200 +47,156 @@
 </script>
 
 <style scoped>
-  *{
+  /* *{
     margin: 10px;
-  }
-  .question{
-      display: flex;
-      flex-direction: column;
-      justify-content: center; 
-  }
-  .question__qualifications{
-        display: flex;
-    flex-direction:column ;
+  } */
+.question{
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  border-bottom: 1px solid var(--vt-c-white-mute);
+  padding: 44px 0;
+}
+.question__qualifications-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+.question__qualifications{
+  display: flex;
+  flex-direction:column;
+  align-items: center;
 
 }
 .question__number{
-  font-size: 32px;
+  margin: 0 auto 10px auto;
+  font-size: 16px;
   text-align: center;
+  font-weight: bold;
+  color: var(--color-blue-dark);
 }
 .question__title{
-  font-size: 24px;
+  font-size: 16px;
   text-align: center;
-}
-.question__qualifications__container{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-}
-  .question__qualification-id {
-    width: 50px;
-  height: 50px;
+  margin-bottom: 18px;
+  color: var(--color-blue-dark);
+
 }
 
-.question__qualification-id:checked {
-  background-color: darkorange;
-  filter: brightness(80%);
+.question__qualification-container{
+  position: relative;
+  height: 57px;
+  width: 57px;
+  margin-right: 5px;
 }
 
-.question__qualification-id::before {
-  content: "";
-  display: inline-block;
-  width: 50px;
-  height: 50px;
-  background-size: cover;
-  background-position: center;
+.question__qualification-container input {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  margin: 0;
   cursor: pointer;
+  z-index: 2;
+  opacity: 0;
 }
 
-.image-qualification-1::before {
-  background-image: url("../assets/images/qualifications/1.svg");
+.question__qualification-container .question__qualification-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  border-radius: 3px;
+  background: var(--vt-c-white-mute);
+  transition: all .3s ease-in-out;
 }
-.image-qualification-1:hover::before {
-  width: 55px;
-  height: 55px;
+
+.question__qualification-container .question__qualification-icon {
+  color: var( --color-blue-dark);
+  font-size: 32px;
 }
-.image-qualification-2::before {
-  background-image: url("../assets/images/qualifications/2.svg");
+
+input:checked+.question__qualification-tile {
+  background-color: var( --color-blue-dark);
+  box-shadow: 0 0 5px var( --color-blue-dark);
 }
-.image-qualification-2:hover::before {
-  width: 55px;
-  height: 55px;
+
+input:hover+.question__qualification-tile {
+  box-shadow: 0 0 3px var( --color-blue-dark);
+
 }
-.image-qualification-3::before {
-  background-image: url("../assets/images/qualifications/3.svg");
+
+input:checked+.question__qualification-tile .question__qualification-icon {
+  color: white;
 }
-.image-qualification-3:hover::before {
-  width: 55px;
-  height: 55px;
+
+.question__qualification-text{
+  font-size: 12px;
+  margin: 5px;
 }
-.image-qualification-4::before {
-  background-image: url("../assets/images/qualifications/4.svg");
+
+@media (min-width: 768px) { 
+
+  .question__number{
+  font-size: 18px;
+  }
+  .question__title{
+    font-size: 18px;
+
 }
-.image-qualification-4:hover::before {
-  width: 55px;
-  height: 55px;
+
+  .question__qualification-container{
+    height: 77px;
+    width: 77px;
+
+  }
+  .question__qualification-container .question__qualification-icon {
+    font-size: 42px;
+  }
 }
-.image-qualification-5::before {
-  background-image: url("../assets/images/qualifications/5.svg");
+
+/* // Large devices (desktops, 992px and up) */
+@media (min-width: 992px) { 
+
+  .question__number{
+  font-size: 20px;
 }
-.image-qualification-5:hover::before {
-  width: 55px;
-  height: 55px;
+.question__title{
+  font-size: 20px;
+
 }
+  .question__qualification-container{
+    height: 97px;
+    width: 97px;
+
+  }
+
+  .question__qualification-container .question__qualification-icon {
+    font-size: 52px;
+  }
+}
+
+/* // Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+
+  .question{
+  margin: 0 auto;
+}
+  .question__qualification-container{
+    height: 114px;
+    width: 114px;
+    margin: 0 20px;
+  }
+
+  .question__qualification-text{
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+  .question__qualification-container .question__qualification-icon {
+    font-size: 66px;
+  }
+}
+
 </style>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- <template>
-    <div class="question_wrapper">
-      <h3 v-html="details.question"></h3>
-      <ul>
-        <li v-for="i in totalRate">
-          <label>
-            <input type="radio" v-model="details.rate" :value="i" name="question-rate">
-            <span>{{ i }}</span>
-          </label>
-        </li>
-      </ul>
-    </div>
-</template>
-  
-  <script>
-  export default {
-    props: ['details', 'totalRate']
-  };
-  </script>
-  
-  <style scoped>
-  .question_wrapper > h3 {
-    font-size: 21px;
-    padding-bottom: 20px;
-  }
-  
-  .question_wrapper > ul > li {
-    display: inline-block;
-    margin-right: 30px;
-  }
-  
-  .question_wrapper > ul > li:last-child {
-    margin-right: 0px;
-  }
-  
-  .question_wrapper > ul > li > label {
-    cursor: pointer;
-  }
-  
-  .question_wrapper > ul > li > label > input {
-    display: none;
-  }
-  
-  .question_wrapper > ul > li > label > span {
-    display: block;
-    position: relative;
-    width: 40px;
-    height: 40px;
-    line-height: 40px;
-    border-radius: 50%;
-    border: 1px solid #123D61;
-    font-size: 20px;
-    transition: all 0.3s;
-  }
-  
-  .question_wrapper > ul > li > label:hover > span {
-    box-shadow: 0px 0px 20px 1px #123D61;
-  }
-  
-  .question_wrapper > ul > li > label > input:checked ~ span {
-    color: #FFF;
-    border: 1px solid transparent;
-  }
-  
-  .question_wrapper > ul > li > label > span:before {
-    content: '';
-    display: block;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    width: 0%;
-    height: 0%;
-    background: #123D61;
-    border-radius: 50%;
-    opacity: 0;
-    z-index: -1;
-    transition: all 0.3s;
-  }
-  
-  .question_wrapper > ul > li > label > input:checked ~ span:before {
-    left: 0%;
-    top: 0%;
-    width: 100%;
-    height: 100%;
-    opacity: 1;
-  }
-  </style>
-   -->

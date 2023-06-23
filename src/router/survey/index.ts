@@ -3,7 +3,6 @@ import Survey from '@/views/survey/Survey.vue'
 import Question from '@/components/Question.vue'
 import Questions from '@/components/Questions.vue'
 import MainSurvey from '@/components/MainSurvey.vue'
-import SurveyStart from '@/views/survey/SurveyStart.vue'
 import SurveyCompleted from '@/views/survey/SurveyCompleted.vue'
 
 // Interfaces
@@ -40,10 +39,9 @@ export default{
     component: Survey,
     redirect:{name:'survey-start'},
     async beforeEnter(to: { params: ValidateAccessI }, from: string, next: ( path? : RouterPathI) => void){
-        const token = window.localStorage.getItem('clave')
+        // const token = window.localStorage.getItem('token')
         
-        if(!token)
-            window.localStorage.setItem('clave','asdasdasda')
+        // if(!token)
 
             
             await getQuestions()  
@@ -51,16 +49,9 @@ export default{
         next()
         
     },
+    
     children:[
-        {
-            path: 'start',
-            name: 'survey-start',
-            component: SurveyStart,
-            async beforeEnter(to: { params: ValidateAccessI }, from: string,next) {
-              
-                next()
-            }
-        },
+       
         {
             path:'questions',
             name:'survey-questions',
