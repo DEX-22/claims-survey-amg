@@ -20,9 +20,11 @@ library.add(far)
 
 const app = createApp(App)
 
+const lang = localStorage.getItem('lang');
+
 const i18n = createI18n({
-    legacy: false, // Utiliza la nueva sintaxis de Composición de la API
-    locale: 'en', // Establece el idioma predeterminado
+    legacy: false,
+    locale: lang || 'en', // Establece el idioma predeterminado
     messages
   });
 

@@ -25,6 +25,19 @@
       </header>
 </template>
 
+<script>
+
+export default {
+  created() {},
+  watch: {
+    '$i18n.locale': function(newValue, oldValue) {
+      localStorage.setItem('lang',newValue);
+    }
+  }
+};
+
+</script>
+
 <style scoped>
 .header {
   width:100%;
@@ -46,7 +59,7 @@
 
 .header__languages{
   width: 80%;
-  margin: 0 auto;
+  margin: 40px auto;
   font-size: 16px;
   display: flex;
   align-items: center;

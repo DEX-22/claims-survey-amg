@@ -19,9 +19,6 @@
 </template>
 <script lang="ts">
 
-// import { questionsStore } from '@/stores/questions.store';
-
-
 
   export default {
     props: ['detailsQuestion', 'qualifications', 'totalQuestions'],
@@ -174,6 +171,13 @@ input:checked+.question__qualification-tile .question__qualification-icon {
   .question__qualification-container .question__qualification-icon {
     font-size: 52px;
   }
+
+  .question__qualification-text{
+  margin-right: 20px;
+  margin-left: 20px;
+  font-size: 17px;
+}
+
 }
 
 /* // Extra large devices (large desktops, 1200px and up) */
@@ -191,6 +195,7 @@ input:checked+.question__qualification-tile .question__qualification-icon {
   .question__qualification-text{
   margin-right: 20px;
   margin-left: 20px;
+  font-size: 19px;
 }
 
   .question__qualification-container .question__qualification-icon {
