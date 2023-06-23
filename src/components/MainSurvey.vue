@@ -53,10 +53,11 @@ export default {
       this.listQuestions = questionsStore().getAll;
     },
 
-    sendSurvey(){
+    async sendSurvey(){
      
-        // this.$router.push({name: 'survey-completed'})
-        console.log(this.listQuestions)
+      await Service.sendSurvey({survey_id: 1,answers: questionsStore().getAll})
+        // console.log()
+        this.$router.push({name: 'survey-completed'})
 
     }
 
@@ -70,7 +71,7 @@ export default {
 .main{
   
   background: white;
-  box-shadow: 0px 0px 15px 0px var(--vt-c-white-soft);
+  box-shadow: 0px 0px 30px 0px var(--vt-c-white-soft);
   border-radius: 20px;
   margin: -80px 15px 50px 15px;
   padding-right: 15px;

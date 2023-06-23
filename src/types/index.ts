@@ -36,4 +36,18 @@ export interface SurveyViewsI{
   QUESTION: {name: string, params?:{id:number}},
   EXPIRED: {name: string},
   COMPLETED: {name: string},
+  NOT_FOUND: {name: string},
+}
+export interface AnswerI{
+  id: number,
+  question_id: number,
+  question: string,
+  rate? : number,
+}
+
+export interface SurveyI{
+  
+  survey_id: number,
+  answers: AnswerI[]
+
 }

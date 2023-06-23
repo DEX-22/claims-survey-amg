@@ -9,6 +9,8 @@ import ErrorRouter from '@/router/error/index'
 import { authStore } from '@/stores/auth.store'
 import { RouterPathI, ValidateAccessI } from '@/types/index'
 
+//views
+import SurveyStart from '@/views/survey/SurveyStart.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -30,25 +32,47 @@ const router = createRouter({
       name: 'survey-expired',
       component: ()=>import('@/views/survey/SurveyExpired.vue'),
     },
+    {
+      path: '/survey/start',
+      name: 'survey-start',
+      component: SurveyStart,
+      async beforeEnter(to: { params: ValidateAccessI }, from: string,next) {
+        
+          next()
+      }
+  },
     ErrorRouter,
     AuthRouter,
     SurveyRouter
   ]
 })
 
-router.beforeEach((to: { params: ValidateAccessI,name? : string }, from: {name? : string})=>{
+router.beforeEach((to: { params: ValidateAccessI,name? : string }, from: {name? : string},next: ()=>void)=>{
 
   let page = undefined 
   const store = authStore()
 
-  // console.log();
+  // if()  
+  // console.log('each');
   
 
-  if ( to.name === 'auth' )  return true
+  next()
 
-  if ( from.name === 'survey-completed' )  return false
+    // if(store.isLogged) 
+    // else next({name:'not-found'})
+
+
+
+
+  // if(from.name != 'survey-completed') return {name:'survey-completed'}
+
+  // else if ( to.name === 'auth' )  return true
+
+  // else if ( from.name === 'survey-completed' )  return false
+
+  // else if ( to.name === 'survey-start' && from.name === 'survey-questions'  )  return false
     
-  if(to.name != 'not-found' &&  !store.isLogged ) return {name:'not-found'}
+  // else if(to.name != 'not-found' &&  !store.isLogged ) return {name:'not-found'}
   
   })
 
