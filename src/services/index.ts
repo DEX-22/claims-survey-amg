@@ -1,4 +1,4 @@
-import { type ValidateAccessI } from '@/types/index';
+import { type ValidateAccessI, type SurveyI } from '@/types/index';
 import amgApi from './axios';
 
 
@@ -17,9 +17,27 @@ class Service {
   }
     async getQuestions() {
       const {data} = await amgApi.get("/survey/get-questions");
-      return data;
-    }
 
+      const questions = [] 
+      
+      data.forEach(el => {
+
+        const element = {...el,
+          rate : null,
+          question_id: el.id
+        }
+
+          questions.push(element)
+      })
+
+      return questions;
+    }
+    async sendSurvey(body: SurveyI){
+     
+        const {data} = await amgApi.post("/survey/save-answers", body);
+        return data;
+      
+    }
 }
 
 export default new Service();

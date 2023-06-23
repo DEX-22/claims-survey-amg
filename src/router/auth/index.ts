@@ -8,6 +8,7 @@ const SURVEY:SurveyViewsI = {
   QUESTION: {name: 'survey-questions'},
   EXPIRED: {name: 'survey-expired',},
   COMPLETED: {name: 'survey-completed'},
+  NOT_FOUND : {name: 'not-found'}
 }
 
 
@@ -38,18 +39,49 @@ export default {
       const client = await Service.validateAccess({id:to.params.id})
 
       const auth = authStore()
-  
+      
+      if(auth.isLogged)
+          next(SURVEY['QUESTION'])
+      
+      
+      switch (client.status) {
+        case 'PENDING':
+          
+          setToken(auth,client.token)
+          next(SURVEY['INDEX'])
 
-      if(!client.access && !client.status) next({name: 'not-found'})
-      else if(client.access && client.status == 'PENDING'){
-        setToken(auth,client.token)
-        next(SURVEY['INDEX'])
+          break;
+        case 'IN PROCESS':
         
-      }  
-      else if(client.access && client.status == 'IN PROCESS') next(  SURVEY['QUESTION'])
-      else if(!client.access && client.status == 'TIME EXPIRED') next(SURVEY['EXPIRED'])
-      else if(!client.access && client.status == 'COMPLETED') next(SURVEY['COMPLETED'])
-      else next({name: 'not-found'})
+          next(SURVEY['QUESTION'])          
+
+          break;
+        case 'COMPLETED':
+      
+          next(SURVEY['COMPLETED'])
+
+        break;
+        }
+          
+
+        
+          
+      
+        
+
+      // if(!client.access && !client.status) next({name: 'not-found'})
+      // else if(client.status == 'COMPLETED'){
+      //   window.localStorage.setItem('isCompleted', true)
+      //   next(SURVEY['COMPLETED'])
+      // }
+      // else if(client.access && client.status == 'PENDING'){
+      //   setToken(auth,client.token)
+      //   next(SURVEY['INDEX'])
+        
+      // }  
+      // else if(client.access && client.status == 'IN PROCESS') next(  SURVEY['QUESTION'])
+      // else if(!client.access && client.status == 'TIME EXPIRED') next(SURVEY['EXPIRED'])
+      // else next({name: 'not-found'})
               
   
          
