@@ -186,6 +186,15 @@ input:checked+.question__qualification-tile .question__qualification-icon {
   .question{
   margin: 0 auto;
 }
+
+.question__number{
+  font-size: 25px;
+}
+.question__title{
+  font-size: 25px;
+
+}
+
   .question__qualification-container{
     height: 114px;
     width: 114px;

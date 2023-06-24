@@ -90,7 +90,7 @@ export default {
   align-items: center;
   text-align: center;
   max-width: 80%;
-  margin: 0 auto;
+  margin: 10px auto 0 auto;
 }
 
 .header__title{
@@ -126,6 +126,11 @@ export default {
   font-size: 35px;
   /* margin-bottom: 24px; */
   }
+
+  .header__content{
+   margin: 30px auto 0 auto;
+  }
+
 
  }
 
