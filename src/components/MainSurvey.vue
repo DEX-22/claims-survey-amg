@@ -1,8 +1,9 @@
 <template>
   <div class="main">
     <div class="main__container" v-if="listQuestions.length > 0">
-      <Question 
+      <Questions
         v-for="(q,id) in listQuestions" :key="id"
+        @changeQuestion="changeQuestion"
         :detailsQuestion="listQuestions[id]" 
         :totalQuestions="listQuestions.length"
         :qualifications="qualifications"
@@ -20,12 +21,12 @@
 import {questionsStore} from '@/stores/questions.store'
 
 import Service from "../services/index";
-import Question from './Question.vue';
+import Questions from './Questions.vue';
 
 export default {
 
   components:{
-    Question,
+    Questions,
   },
 
   data() {
@@ -48,18 +49,26 @@ export default {
 
   methods:{
     getQuestions() {
-      console.log(questionsStore().questions);
-      
-      this.listQuestions = questionsStore().getAll;
+      this.listQuestions = JSON.parse(localStorage.getItem('questionDetails')) || questionsStore().getAll;
     },
 
     async sendSurvey(){
-     
-      await Service.sendSurvey({survey_id: 1,answers: questionsStore().getAll})
-        // console.log()
-        this.$router.push({name: 'survey-completed'})
 
-    }
+
+      const validRates = this.listQuestions.every(question => question.rate != null);
+
+      if(validRates){
+        alert("respondiste todo")
+        await Service.sendSurvey({survey_id: 1,answers: questionsStore().getAll})
+        this.$router.push({name: 'survey-completed'})
+      }else{
+        alert("te falta responder")
+      }
+    },
+
+    changeQuestion(){
+      localStorage.setItem('questionDetails', JSON.stringify(this.listQuestions));
+      }
 
   },
 

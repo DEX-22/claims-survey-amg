@@ -2,7 +2,7 @@
     "en": {
 
       "title-header": "SATISFACTION SURVEY",
-      "text-header": "Deep within our existence, a profound and transcendent power resides. We are capable of overcoming obstacles, discovering our purpose.",
+      "text-header": "Life is a journey full of challenges, but also opportunities. Seize each moment, learn from mistakes, and never stop dreaming. Success comes to those who persevere and dare to face obstacles with courage and determination.",
 
 
       "title-button-submit":"Submit",
@@ -13,15 +13,15 @@
       "text-footer-working": "Monday to Saturday:",
       "title-footer-follow": "Follow Us",
 
-      "title-copyright": "All Right Reserved."
+      "title-copyright": "All Right Reserved.",
 
-
+      "text-btn-start": "Start Survey"
     },
 
     "es": {
 
       "title-header": "ENCUESTA DE SATISFACCIÓN",
-      "text-header": "En lo profundo de nuestra existencia, se oculta un poder inmenso y trascendental. Somos capaces de superar obstáculos, descubrir nuestro propósito.",
+      "text-header": "La vida es un viaje lleno de desafíos, pero también de oportunidades. Aprovecha cada momento, aprende de los errores y nunca dejes de soñar. El éxito llega a aquellos que perseveran y se atreven a enfrentar los obstáculos con valentía y determinación.",
 
 
       "title-button-submit":"Enviar",
@@ -31,9 +31,9 @@
       "title-footer-working": "Horario de trabajo",
       "text-footer-working": "De lunes a sábado:",
       "title-footer-follow": "Síguenos",
-      "title-copyright": "Todos los derechos reservados."
+      "title-copyright": "Todos los derechos reservados.",
 
-
+      "text-btn-start": "Iniciar Encuesta"
     }
   }
   

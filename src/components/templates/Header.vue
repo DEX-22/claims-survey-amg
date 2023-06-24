@@ -1,5 +1,5 @@
 <template>
-    <header class="header">
+    <header class="header" :class="isPageStart && 'header-start'">
           <div class="header__grid">
             <div class="header__languages">
               <label class="header__languages-label">
@@ -19,7 +19,10 @@
               <h1 class="header__title">{{  $t('title-header') }}</h1>
               <span class="header__content-line line-short"></span>
               <p class="header__text">{{ $t('text-header') }}</p>
-              <span class="header__content-line line-long"></span>
+              <span class="header__content-line line-long" :class="isPageStart && 'hidden'"></span>
+            <button class="header__btn-start" v-if="isPageStart" @click="startSurvey" > 
+            {{ $t('text-btn-start')}}
+            </button>
             </div>
         </div>    
       </header>
@@ -29,6 +32,22 @@
 
 export default {
   created() {},
+
+  props:{
+    isPageStart : {
+      type: Boolean,
+      required: false,
+      default: false
+    }
+  },
+
+  methods:{
+      startSurvey(){
+            this.$router.push({name:'survey-questions'})
+      }
+    },
+
+  
   watch: {
     '$i18n.locale': function(newValue, oldValue) {
       localStorage.setItem('lang',newValue);
@@ -41,13 +60,16 @@ export default {
 <style scoped>
 .header {
   width:100%;
-  min-height: 465px;
   background-position: center;
   background-size: cover;
   background-image: url("../../assets/images/background-header.png");
   z-index: -1;
+  padding: 0 0 80px 0;
 }
 
+.header-start{
+  height: 100vh;
+}
 .header__grid{
     height: 100%;
     color: white;
@@ -59,7 +81,7 @@ export default {
 
 .header__languages{
   width: 80%;
-  margin: 40px auto;
+  margin: 0 auto 0 auto;
   font-size: 16px;
   display: flex;
   align-items: center;
@@ -90,7 +112,7 @@ export default {
   align-items: center;
   text-align: center;
   max-width: 80%;
-  margin: 10px auto 0 auto;
+  margin: 20px auto 0 auto;
 }
 
 .header__title{
@@ -100,11 +122,12 @@ export default {
 
 .header__text{
   font-size: 16px;
+  margin-top: 15px;
 }
 
 .header__content-line{
   border: 1px solid white;
-  margin: 5px 0;
+  margin: 10px 0;
 }
 
 .line-short{
@@ -115,7 +138,33 @@ export default {
 .line-long{
   width: 328px;
   border: 1px solid white;
-  margin: 40px 0 0 0;
+  margin-bottom: 80px;
+}
+
+
+.header__btn-start{
+    background: var(--color-blue-dark);
+    border-radius: 4px;
+    border: 1px solid var(--vt-c-white-mute);
+    color: white;
+    font-size: 15px;
+    text-align: center;
+    padding: 10px 20px;
+    margin: 25px auto 50px auto;
+    transition: all .3s ease;
+  }
+  
+  .header__btn-start:hover{
+    box-shadow: 0px 0px 10px 0px var(--vt-c-white-soft);
+    border: 1px solid var(--vt-c-white-mute-2);
+    color: white;
+    transform: scale(1.01);
+
+}
+
+.header__btn-start:active{
+  transform: scale(1.1);
+
 }
 
 
@@ -124,7 +173,6 @@ export default {
 @media (min-width: 768px) {
   .header__title{
   font-size: 35px;
-  /* margin-bottom: 24px; */
   }
 
   .header__content{
@@ -145,6 +193,15 @@ export default {
     font-size: 18px;
     margin-top: 8px;
   }
+
+  .header__btn-start{
+    font-size: 20px;
+    text-align: center;
+    margin: 25px auto 50px auto;
+    transition: all .3s ease;
+  }
+
+
  }
 
 /* // Extra large devices (large desktops, 1200px and up) */
@@ -154,6 +211,10 @@ export default {
     height: 610px;
     background-image: url("../../assets/images/background-header-desktop.png");
   }
+
+  .header-start{
+  height: 100vh;
+}
 
 
   .header__grid{      
