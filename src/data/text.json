@@ -4,7 +4,7 @@
       "title-header": "SATISFACTION SURVEY",
       "text-header": "Life is a journey full of challenges, but also opportunities. Seize each moment, learn from mistakes, and never stop dreaming. Success comes to those who persevere and dare to face obstacles with courage and determination.",
 
-
+      "title-question" : "Question",
       "title-button-submit":"Submit",
 
       "title-footer-email": "Email",
@@ -24,6 +24,7 @@
       "text-header": "La vida es un viaje lleno de desafíos, pero también de oportunidades. Aprovecha cada momento, aprende de los errores y nunca dejes de soñar. El éxito llega a aquellos que perseveran y se atreven a enfrentar los obstáculos con valentía y determinación.",
 
 
+      "title-question" : "Pregunta",
       "title-button-submit":"Enviar",
 
       "title-footer-email": "Correo electrónico",

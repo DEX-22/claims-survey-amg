@@ -1,7 +1,7 @@
 <template>
     <div class="question">
       <div class="question__content-text">
-        <h2 class="question__number">Question {{ detailsQuestion.id }}</h2>
+        <h2 class="question__number">{{ $t('title-question') }} {{ detailsQuestion.id }}</h2>
         <h3 class="question__title">{{ detailsQuestion.question }}</h3>
       </div>
         <div class="question__qualifications-container">
@@ -12,7 +12,7 @@
                   <font-awesome-icon :icon="qualification.icon" class="question__qualification-icon" />
                 </div>
               </div>
-              <span class="question__qualification-text">{{ qualification.text }}</span>
+              <span class="question__qualification-text">{{ $i18n.locale == 'en' ? qualification.text_en : qualification.text_es }}</span>
         </div>
       </div>
     </div>
@@ -52,9 +52,9 @@
   padding: 44px 0;
 }
 .question__qualifications-container{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(57px, 1fr));
+  column-gap: 5px;
 }
 .question__qualifications{
   display: flex;
@@ -81,7 +81,7 @@
   position: relative;
   height: 57px;
   width: 57px;
-  margin-right: 5px;
+
 }
 
 .question__qualification-container input {
@@ -102,7 +102,7 @@
   height: 100%;
   border-radius: 3px;
   background: var(--vt-c-white-mute);
-  transition: all .3s ease-in-out;
+  transition: all 0s ease-in-out;
 }
 
 .question__qualification-container .question__qualification-icon {
@@ -182,6 +182,7 @@ input:checked+.question__qualification-tile .question__qualification-icon {
 
   .question{
   margin: 0 auto;
+  width: 790px;
   }
 
   .question__number{

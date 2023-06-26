@@ -3,7 +3,7 @@
           <div class="header__grid">
             <div class="header__languages">
               <label class="header__languages-label">
-                <input type="radio" name="language" class="header__languages-input" value="es" checked v-model="$i18n.locale">
+                <input type="radio" name="language" class="header__languages-input" value="es" v-model="$i18n.locale">
                 <span class="header__languages-text">ES</span>
               </label>
               <span class="header__languages-separator">/</span>
@@ -58,6 +58,20 @@ export default {
 </script>
 
 <style scoped>
+
+@media (max-width: 364px) {
+  .header__title{
+  font-size: 14px;
+  /* font-weight: bold; */
+}
+
+
+.header__grid{
+  color: red;
+}
+
+}
+
 .header {
   width:100%;
   background-position: center;
@@ -69,6 +83,7 @@ export default {
 
 .header-start{
   height: 100vh;
+  padding-bottom: 0;
 }
 .header__grid{
     height: 100%;
@@ -95,13 +110,11 @@ export default {
 .header__languages-text {
   padding: 5px 10px;
   cursor: pointer;
+  color: var(--vt-c-white-soft);
 }
 
 .header__languages-input:checked + .header__languages-text {
-  font-weight: bold;
-}
-
-.language-focus{
+  color: var(--vt-c-white-mute-2);
   font-weight: bold;
 }
 
@@ -136,9 +149,9 @@ export default {
 }
 
 .line-long{
-  width: 328px;
+  width: 90%;
   border: 1px solid white;
-  margin-bottom: 80px;
+  margin-bottom: 100px;
 }
 
 
@@ -163,7 +176,7 @@ export default {
 }
 
 .header__btn-start:active{
-  transform: scale(1.1);
+  transform: scale(.9);
 
 }
 
@@ -224,7 +237,7 @@ export default {
   }
 
   .header__content{
-  max-width: 800px;
+  max-width: 900px;
   margin: 0 0 0 -80px;
   }
 
@@ -260,7 +273,6 @@ export default {
   }
 
   .line-long{
-    width: 90%;
     margin: 40px 0;
   }
 

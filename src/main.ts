@@ -1,5 +1,6 @@
 import './assets/tailwind.css'
 import './assets/main.css'
+import 'floating-vue/dist/style.css'
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
@@ -13,6 +14,7 @@ import messages from './data/text.json';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { far } from '@fortawesome/free-regular-svg-icons'
+import FloatingVue from 'floating-vue'
 
 library.add(far)
 
@@ -34,6 +36,7 @@ const i18n = createI18n({
 app.use(createPinia())
 app.use(router)
 app.use(i18n)
+app.use(FloatingVue)
 app.component('font-awesome-icon', FontAwesomeIcon)
 app.mount('#app')
 

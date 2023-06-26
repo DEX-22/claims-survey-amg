@@ -10,7 +10,13 @@
         />
       <div class="main__wrapper-buttons">
         <div class="main__submit">
-          <button @click="sendSurvey" class="main__button">{{ $t('title-button-submit') }}</button>
+          <button
+            v-tooltip="{ content: 'Please complete the survey.', disabled: validRates }"
+            @click="sendSurvey"
+            :class="validRates && 'button-enable'"
+            class="main__button">
+            {{ $t('title-button-submit') }}
+          </button>
         </div>
       </div>
     </div>
@@ -33,11 +39,11 @@ export default {
     return {
       listQuestions: [],
       qualifications: [
-        { id : 1, text : "Terrible", icon:['far', 'face-angry']},
-        { id : 2, text : "Bad", icon:['far', 'face-frown']},
-        { id : 3, text : "Regular", icon:['far', 'face-meh']},
-        { id : 4, text : "Good", icon: ['far', 'face-smile']},
-        { id : 5, text : "Excellent", icon: ['far', 'face-grin-stars']},
+        { id : 1, text_en : "Terrible",text_es: "Pésimo", icon:['far', 'face-angry']},
+        { id : 2, text_en : "Bad",text_es: "Malo", icon:['far', 'face-frown']},
+        { id : 3, text_en : "Regular",text_es: "Regular", icon:['far', 'face-meh']},
+        { id : 4, text_en : "Good",text_es: "Bueno", icon: ['far', 'face-smile']},
+        { id : 5, text_en : "Excellent",text_es: "Excelente", icon: ['far', 'face-grin-stars']},
       ],
       indexQ: 0,
     }
@@ -53,16 +59,12 @@ export default {
     },
 
     async sendSurvey(){
-
-
-      const validRates = this.listQuestions.every(question => question.rate != null);
-
-      if(validRates){
-        alert("respondiste todo")
+      if(this.validRates){
+        alert("respondiste todo") //
         await Service.sendSurvey({survey_id: 1,answers: questionsStore().getAll})
         this.$router.push({name: 'survey-completed'})
       }else{
-        alert("te falta responder")
+        return
       }
     },
 
@@ -71,6 +73,12 @@ export default {
       }
 
   },
+
+  computed:{
+    validRates(){
+      return this.listQuestions.every(question => question.rate != null)
+    }
+  }
 
 }
 </script>
@@ -112,7 +120,7 @@ export default {
 }
 .main__button{
 
-  background: var(--color-blue-dark);
+  background: var(--vt-c-white-soft);
   border-radius: 4px;
   color: white;
   font-size: 15px;
@@ -120,12 +128,16 @@ export default {
   width: 82px;
   height: 36px;
   margin: 25px auto 50px auto;
+  cursor: not-allowed;  
   transition: all .3s ease;
 }
 
-.main__button:active{
-  transform: scale(1.1);
-
+.button-enable{
+  background: var(--color-blue-dark);
+  cursor: pointer;
+}
+.button-enable:active{
+  transform: scale(.9);
 }
 
 
