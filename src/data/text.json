@@ -15,26 +15,32 @@
 
       "title-copyright": "All Right Reserved.",
 
-      "text-btn-start": "Start Survey"
+      "text-btn-start": "Start Survey",
+
+      "title-survey-completed": "SURVEY COMPLETED",
+      "text-survey-completed": "Thank you for completing the survey!"
     },
-
+    
     "es": {
-
+      
       "title-header": "ENCUESTA DE SATISFACCIÓN",
       "text-header": "La vida es un viaje lleno de desafíos, pero también de oportunidades. Aprovecha cada momento, aprende de los errores y nunca dejes de soñar. El éxito llega a aquellos que perseveran y se atreven a enfrentar los obstáculos con valentía y determinación.",
-
-
+      
+      
       "title-question" : "Pregunta",
       "title-button-submit":"Enviar",
-
+      
       "title-footer-email": "Correo electrónico",
       "title-footer-phone": "Teléfono",
       "title-footer-working": "Horario de trabajo",
       "text-footer-working": "De lunes a sábado:",
       "title-footer-follow": "Síguenos",
       "title-copyright": "Todos los derechos reservados.",
+      
+      "text-btn-start": "Iniciar Encuesta",
 
-      "text-btn-start": "Iniciar Encuesta"
+      "title-survey-completed": "ENCUESTA COMPLETADA",
+      "text-survey-completed": "Gracias por completar la encuesta!"
     }
   }
   

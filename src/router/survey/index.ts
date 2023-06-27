@@ -55,10 +55,10 @@ export default{
             name:'survey-questions',
             component: MainSurvey,
         },
-        {
-            path:'completed',
-            name: 'survey-completed',
-            component: SurveyCompleted,
-        }
+        // {
+        //     path:'completed',
+        //     name: 'survey-completed',
+        //     component: SurveyCompleted,
+        // }
     ]
 }

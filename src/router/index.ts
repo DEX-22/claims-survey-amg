@@ -11,6 +11,7 @@ import { RouterPathI, ValidateAccessI } from '@/types/index'
 
 //views
 import SurveyStart from '@/views/survey/SurveyStart.vue'
+import SurveyCompleted from '@/views/survey/SurveyCompleted.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -41,6 +42,15 @@ const router = createRouter({
           next()
       }
   },
+  {
+    path: '/survey/completed',
+    name: 'survey-completed',
+    component: SurveyCompleted,
+    async beforeEnter(to: { params: ValidateAccessI }, from: string,next) {
+      
+        next()
+    }
+},
     ErrorRouter,
     AuthRouter,
     SurveyRouter
