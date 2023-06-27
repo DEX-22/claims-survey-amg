@@ -62,6 +62,9 @@
 
 /* // Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
+    .completed{
+    background-image: url('@/assets/images/background-header-desktop.png');
+    }
     .completed__title{
         font-size: 30px;    
     }
@@ -91,8 +94,5 @@
         width: 400px;
     }
 }
-
-
-
 
 </style>
