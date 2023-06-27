@@ -1,0 +1,39 @@
+{
+    "en": {
+
+      "title-header": "SATISFACTION SURVEY",
+      "text-header": "Deep within our existence, a profound and transcendent power resides. We are capable of overcoming obstacles, discovering our purpose.",
+
+
+      "title-button-submit":"Submit",
+
+      "title-footer-email": "Email",
+      "title-footer-phone": "Phone",
+      "title-footer-working": "Working Hours",
+      "text-footer-working": "Monday to Saturday:",
+      "title-footer-follow": "Follow Us",
+
+      "title-copyright": "All Right Reserved."
+
+
+    },
+
+    "es": {
+
+      "title-header": "ENCUESTA DE SATISFACCIÓN",
+      "text-header": "En lo profundo de nuestra existencia, se oculta un poder inmenso y trascendental. Somos capaces de superar obstáculos, descubrir nuestro propósito.",
+
+
+      "title-button-submit":"Enviar",
+
+      "title-footer-email": "Correo electrónico",
+      "title-footer-phone": "Teléfono",
+      "title-footer-working": "Horario de trabajo",
+      "text-footer-working": "De lunes a sábado:",
+      "title-footer-follow": "Síguenos",
+      "title-copyright": "Todos los derechos reservados."
+
+
+    }
+  }
+  
