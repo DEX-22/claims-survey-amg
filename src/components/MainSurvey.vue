@@ -91,6 +91,7 @@ export default {
   box-shadow: 0px 0px 30px 0px var(--vt-c-white-soft);
   border-radius: 20px;
   margin: -80px 15px 50px 15px;
+  /* width: 80%; */
   padding-right: 15px;
   padding-left: 15px;
 }

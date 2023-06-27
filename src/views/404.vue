@@ -1,6 +1,5 @@
 <template>
     <div class="not-found"> 
-        <!-- <img :src="'./assets/images/404-page-not-found.png'" alt="not found"> -->
     </div>
 </template>
 <style scoped>

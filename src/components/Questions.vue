@@ -182,7 +182,7 @@ input:checked+.question__qualification-tile .question__qualification-icon {
 
   .question{
   margin: 0 auto;
-  width: 790px;
+  width: 750px;
   }
 
   .question__number{
