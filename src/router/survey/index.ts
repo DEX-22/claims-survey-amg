@@ -1,7 +1,5 @@
 // Components
 import Survey from '@/views/survey/Survey.vue'
-import Question from '@/components/Question.vue'
-import Questions from '@/components/Questions.vue'
 import MainSurvey from '@/components/MainSurvey.vue'
 import SurveyCompleted from '@/views/survey/SurveyCompleted.vue'
 
@@ -56,15 +54,6 @@ export default{
             path:'questions',
             name:'survey-questions',
             component: MainSurvey,
-            // redirect:{name:'survey-question',params:{id:1}},
-            /* children:[
-                {
-
-                    path: ':id',
-                    name: 'survey-question',
-                    component: Question,
-                },
-            ] */
         },
         {
             path:'completed',

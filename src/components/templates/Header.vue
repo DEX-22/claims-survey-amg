@@ -1,9 +1,9 @@
 <template>
-    <header class="header">
+    <header class="header" :class="isPageStart && 'header-start'">
           <div class="header__grid">
             <div class="header__languages">
               <label class="header__languages-label">
-                <input type="radio" name="language" class="header__languages-input" value="es" checked v-model="$i18n.locale">
+                <input type="radio" name="language" class="header__languages-input" value="es" v-model="$i18n.locale">
                 <span class="header__languages-text">ES</span>
               </label>
               <span class="header__languages-separator">/</span>
@@ -19,22 +19,72 @@
               <h1 class="header__title">{{  $t('title-header') }}</h1>
               <span class="header__content-line line-short"></span>
               <p class="header__text">{{ $t('text-header') }}</p>
-              <span class="header__content-line line-long"></span>
+              <span class="header__content-line line-long" :class="isPageStart && 'hidden'"></span>
+            <button class="header__btn-start" v-if="isPageStart" @click="startSurvey" > 
+            {{ $t('text-btn-start')}}
+            </button>
             </div>
         </div>    
       </header>
 </template>
 
+<script>
+
+export default {
+  created() {},
+
+  props:{
+    isPageStart : {
+      type: Boolean,
+      required: false,
+      default: false
+    }
+  },
+
+  methods:{
+      startSurvey(){
+            this.$router.push({name:'survey-questions'})
+      }
+    },
+
+  
+  watch: {
+    '$i18n.locale': function(newValue, oldValue) {
+      localStorage.setItem('lang',newValue);
+    }
+  }
+};
+
+</script>
+
 <style scoped>
+
+@media (max-width: 364px) {
+  .header__title{
+  font-size: 14px;
+  /* font-weight: bold; */
+}
+
+
+.header__grid{
+  color: red;
+}
+
+}
+
 .header {
   width:100%;
-  min-height: 465px;
   background-position: center;
   background-size: cover;
   background-image: url("../../assets/images/background-header.png");
   z-index: -1;
+  padding: 0 0 80px 0;
 }
 
+.header-start{
+  height: 100vh;
+  padding-bottom: 0;
+}
 .header__grid{
     height: 100%;
     color: white;
@@ -46,7 +96,7 @@
 
 .header__languages{
   width: 80%;
-  margin: 0 auto;
+  margin: 0 auto 0 auto;
   font-size: 16px;
   display: flex;
   align-items: center;
@@ -60,13 +110,11 @@
 .header__languages-text {
   padding: 5px 10px;
   cursor: pointer;
+  color: var(--vt-c-white-soft);
 }
 
 .header__languages-input:checked + .header__languages-text {
-  font-weight: bold;
-}
-
-.language-focus{
+  color: var(--vt-c-white-mute-2);
   font-weight: bold;
 }
 
@@ -77,7 +125,7 @@
   align-items: center;
   text-align: center;
   max-width: 80%;
-  margin: 0 auto;
+  margin: 20px auto 0 auto;
 }
 
 .header__title{
@@ -87,11 +135,12 @@
 
 .header__text{
   font-size: 16px;
+  margin-top: 15px;
 }
 
 .header__content-line{
   border: 1px solid white;
-  margin: 5px 0;
+  margin: 10px 0;
 }
 
 .line-short{
@@ -100,9 +149,35 @@
 }
 
 .line-long{
-  width: 328px;
+  width: 90%;
   border: 1px solid white;
-  margin: 40px 0 0 0;
+  margin-bottom: 100px;
+}
+
+
+.header__btn-start{
+    background: var(--color-blue-dark);
+    border-radius: 4px;
+    border: 1px solid var(--vt-c-white-mute);
+    color: white;
+    font-size: 15px;
+    text-align: center;
+    padding: 10px 20px;
+    margin: 25px auto 50px auto;
+    transition: all .3s ease;
+  }
+  
+  .header__btn-start:hover{
+    box-shadow: 0px 0px 10px 0px var(--vt-c-white-soft);
+    border: 1px solid var(--vt-c-white-mute-2);
+    color: white;
+    transform: scale(1.01);
+
+}
+
+.header__btn-start:active{
+  transform: scale(.9);
+
 }
 
 
@@ -111,8 +186,12 @@
 @media (min-width: 768px) {
   .header__title{
   font-size: 35px;
-  /* margin-bottom: 24px; */
   }
+
+  .header__content{
+   margin: 30px auto 0 auto;
+  }
+
 
  }
 
@@ -127,6 +206,15 @@
     font-size: 18px;
     margin-top: 8px;
   }
+
+  .header__btn-start{
+    font-size: 20px;
+    text-align: center;
+    margin: 25px auto 50px auto;
+    transition: all .3s ease;
+  }
+
+
  }
 
 /* // Extra large devices (large desktops, 1200px and up) */
@@ -137,6 +225,10 @@
     background-image: url("../../assets/images/background-header-desktop.png");
   }
 
+  .header-start{
+  height: 100vh;
+}
+
 
   .header__grid{      
     place-items: center;
@@ -145,7 +237,7 @@
   }
 
   .header__content{
-  max-width: 800px;
+  max-width: 900px;
   margin: 0 0 0 -80px;
   }
 
@@ -181,7 +273,6 @@
   }
 
   .line-long{
-    width: 90%;
     margin: 40px 0;
   }
 
