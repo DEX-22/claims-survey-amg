@@ -48,13 +48,13 @@ export default {
     }
   },
 
-  created() {
+  async created() {
     this.getQuestions();
   },
 
   methods:{
-    getQuestions() {
-      this.listQuestions = JSON.parse(localStorage.getItem('questionDetails')) || questionsStore().getAll;
+    async getQuestions() {
+      this.listQuestions = JSON.parse(localStorage.getItem('questionDetails')) || await Service.getQuestions();
     },
 
     async sendSurvey(){
