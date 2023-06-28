@@ -24,7 +24,6 @@
 </template>
 
 <script>
-import {questionsStore} from '@/stores/questions.store'
 
 import Service from "../services/index";
 import Questions from './Questions.vue';
@@ -60,8 +59,7 @@ export default {
 
     async sendSurvey(){
       if(this.validRates){
-        alert("respondiste todo") //
-        await Service.sendSurvey({survey_id: 1,answers: questionsStore().getAll})
+        await Service.sendSurvey({survey_id: 1,answers: this.listQuestions})
         this.$router.push({name: 'survey-completed'})
       }else{
         return
