@@ -5,8 +5,6 @@ import AuthRouter from '@/router/auth/index'
 import SurveyRouter from '@/router/survey/index'
 import ErrorRouter from '@/router/error/index'
 
-//store
-import { authStore } from '@/stores/auth.store'
 import { RouterPathI, ValidateAccessI } from '@/types/index'
 
 //views
@@ -16,23 +14,6 @@ import SurveyCompleted from '@/views/survey/SurveyCompleted.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
-    {
-      path: '/',
-      name: 'only-home',
-      component: ()=> import('@/views/HomeView.vue'),
-      redirect:{name:'not-found'}
-    },
-    {
-      path: '/:some',
-      name: 'home',
-      component: ()=> import('@/views/HomeView.vue'),
-      redirect:{name:'not-found'}
-    },
-    {
-      path:'/time-expired',
-      name: 'survey-expired',
-      component: ()=>import('@/views/survey/SurveyExpired.vue'),
-    },
     {
       path: '/survey/start',
       name: 'survey-start',
@@ -60,13 +41,18 @@ const router = createRouter({
 router.beforeEach((to: { params: ValidateAccessI,name? : string }, from: {name? : string},next: ()=>void)=>{
 
   let page = undefined 
-  const store = authStore()
+
+  // TODO *** REDIRECCIONAMIENTO - VALIDACION DE TOKEN
+  // const auth = authStore()
+
 
   // if()  
   // console.log('each');
   
+  // console.log(auth.isLogged);
 
   next()
+
 
     // if(store.isLogged) 
     // else next({name:'not-found'})

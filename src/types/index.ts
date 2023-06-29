@@ -34,7 +34,6 @@ export interface AuthI{
 export interface SurveyViewsI{
   INDEX: {name: string},
   QUESTION: {name: string, params?:{id:number}},
-  EXPIRED: {name: string},
   COMPLETED: {name: string},
   NOT_FOUND: {name: string},
 }
