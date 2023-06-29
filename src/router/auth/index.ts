@@ -1,13 +1,8 @@
 import Auth from "@/views/auth/Auth.vue"
 import Service from "@/services/index"
-import type {  ValidateAccessI,RouterPathI, SurveyViewsI } from "@/types/index"
+import type {  ValidateAccessI,RouterPathI } from "@/types/index"
 
-const SURVEY:SurveyViewsI = {
-  INDEX: {name: 'survey-start',},
-  QUESTION: {name: 'survey-questions'},
-  COMPLETED: {name: 'survey-completed'},
-  NOT_FOUND : {name: 'not-found'}
-}
+import SURVEY from '@/data/list-views';
 
 export default {
     path: '/auth/:id',
@@ -17,11 +12,10 @@ export default {
     // which is lazy-loaded when the route is visited.
     component: Auth,
     async beforeEnter(to: { params: ValidateAccessI }, from: string, next: ( path? : RouterPathI) => void) {
-        
-
+        // next()
       const client = await Service.validateAccess({id:to.params.id})
-      
       if (client.access) {
+            localStorage.setItem('token', client.token)
             next(SURVEY['INDEX'])
       } else {
         if(client.status == 'COMPLETED') {

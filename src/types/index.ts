@@ -36,6 +36,7 @@ export interface SurveyViewsI{
   QUESTION: {name: string, params?:{id:number}},
   COMPLETED: {name: string},
   NOT_FOUND: {name: string},
+  AUTH: {name: string},
 }
 export interface AnswerI{
   id: number,

@@ -5,11 +5,11 @@
         <div class="footer__contact">
           <div class="footer__email">
             <h2 class="footer__email-title">{{ $t('title-footer-email') }}</h2>
-            <p class="footer__email-info">customer@amggroup.us</p>
+            <p class="footer__email-info">costumer@amgqualitycontrol.us</p>
           </div>
           <div class="footer__phone">
             <h2 class="footer__phone-title">{{ $t('title-footer-phone') }}</h2>
-            <p class="footer__phone-info">(949) 375 - 1002</p>
+            <p class="footer__phone-info">805-626-5659</p>
           </div>
           <div class="footer__working">
             <h2 class="footer__working-title">{{ $t('title-footer-working') }}</h2>
