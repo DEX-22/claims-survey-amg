@@ -1,15 +1,9 @@
 <template>
-    <div class="not-found"> 
+    <div class="flex flex-col items-center justify-center h-[100vh] w-full">
+        <NotFoundSVG />
     </div>
 </template>
-<style scoped>
- .not-found{
-    background-image: url('../assets/images/not-found.png');
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-    width: 100vw;
-    height: 100vh;
-    
- }
-</style>
+
+<script setup lang="ts">
+import NotFoundSVG from "@/components/svg/NotFoundSVG.vue"
+</script>
