@@ -13,7 +13,9 @@ export default {
     component: Auth,
     async beforeEnter(to: { params: ValidateAccessI }, from: string, next: ( path? : RouterPathI) => void) {
         // next()
+        
       const client = await Service.validateAccess({id:to.params.id})
+      localStorage.setItem('claim_survey_id', client.id)
       if (client.access) {
             localStorage.setItem('token', client.token)
             next(SURVEY['INDEX'])

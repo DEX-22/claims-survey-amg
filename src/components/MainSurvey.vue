@@ -49,12 +49,18 @@ export default {
   },
 
   async created() {
+    // console.log()
     this.getQuestions();
   },
 
   methods:{
     async getQuestions() {
-      this.listQuestions = JSON.parse(localStorage.getItem('questionDetails')) || await Service.getQuestions();
+      // this.listQuestions = JSON.parse(localStorage.getItem('questionDetails')) || await Service.getQuestions([id]);
+      const param = {
+            id: localStorage.getItem('claim_survey_id')
+          };
+      const data = await Service.getQuestions(param);
+      console.log(data)
     },
 
     async sendSurvey(){
