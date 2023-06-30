@@ -53,16 +53,21 @@ export default {
   },
 
   methods:{
+    async infoLS(){
+      const client = await Service.validateAccess({id:localStorage.getItem('token') || ""})
+      return client
+    },
+    
     async getQuestions() {
-      const param = {
-            id: JSON.parse(localStorage.getItem('claim_survey_id')) || ""
-          };
+      const infoClient = await this.infoLS();
+      const param = {id: infoClient.id}
       this.listQuestions = JSON.parse(localStorage.getItem('questionDetails')) || await Service.getQuestions(param);
     },
 
     async sendSurvey(){
       if(this.validRates){
-        await Service.sendSurvey({survey_id: 1,answers: this.listQuestions})
+        const infoClient = await this.infoLS();
+        await Service.sendSurvey({survey_id: infoClient.id,answers: this.listQuestions})
         this.$router.push({name: 'survey-completed'})
       }else{
         return
