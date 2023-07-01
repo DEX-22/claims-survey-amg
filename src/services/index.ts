@@ -16,7 +16,7 @@ class Service {
     }
   }
     async getQuestions(body : ValidateAccessI) {
-      const {data} = await amgApi.post("/survey/get-questions", body);
+      const {data} = await amgApi.post("/survey/get-details-claim-survey", body);
 
       const questions: any = [] 
 

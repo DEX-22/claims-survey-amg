@@ -14,7 +14,7 @@
           <div class="footer__working">
             <h2 class="footer__working-title">{{ $t('title-footer-working') }}</h2>
             <p class="footer__working-info">{{ $t('text-footer-working') }}</p>
-            <span>09:00 a.m. - 06:00 p.m.</span>
+            <span class="footer__working-span">09:00 a.m. - 06:00 p.m.</span>
           </div>
           <div class="footer__follow">
             <h2 class="footer__follow-title">{{ $t('title-footer-follow') }}</h2>
@@ -123,7 +123,7 @@ export default {
     font-size: 20px;
   }
 
-  .footer__email-info,.footer__phone-info,.footer__working-info,.footer__follow-info{
+  .footer__email-info,.footer__phone-info,.footer__working-info,.footer__follow-info ,.footer__working-span{
     font-size: 20px;
   }
 
