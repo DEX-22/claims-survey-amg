@@ -4,6 +4,7 @@
       <Questions
         v-for="(q,id) in listQuestions" :key="id"
         @changeQuestion="changeQuestion"
+        :indexQuestion="id+1"
         :detailsQuestion="listQuestions[id]" 
         :totalQuestions="listQuestions.length"
         :qualifications="qualifications"

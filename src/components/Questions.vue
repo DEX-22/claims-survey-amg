@@ -1,7 +1,7 @@
 <template>
     <div class="question">
       <div class="question__content-text">
-        <h2 class="question__number">{{ $t('title-question') }} {{ detailsQuestion.id }}</h2>
+        <h2 class="question__number">{{ $t('title-question') }} {{ indexQuestion }}</h2>
         <h3 class="question__title">{{ $i18n.locale == 'en' ? detailsQuestion.english : detailsQuestion.spanish }}</h3>
       </div>
         <div class="question__qualifications-container">
@@ -21,7 +21,7 @@
 
 
   export default {
-    props: ['listQuestions','detailsQuestion', 'qualifications', 'totalQuestions'],
+    props: ['listQuestions','detailsQuestion', 'qualifications', 'totalQuestions','indexQuestion'],
     data() {
       return {
         
