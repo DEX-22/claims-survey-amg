@@ -12,13 +12,10 @@
                 <span class="header__languages-text">EN</span>
               </label>
             </div>
-
-
-
             <div class="header__content">
               <h1 class="header__title">{{  $t('title-header') }}</h1>
               <span class="header__content-line line-short"></span>
-              <p class="header__text">{{ $t('text-header') }}</p>
+              <p class="header__text">{{ $i18n.locale == 'en' ? description_en : description_es }}</p>
               <span class="header__content-line line-long" :class="isPageStart && 'hidden'"></span>
             <button class="header__btn-start" v-if="isPageStart" @click="startSurvey" > 
             {{ $t('text-btn-start')}}
@@ -30,8 +27,20 @@
 
 <script>
 
+import Service from "../../services/index";
+
 export default {
-  created() {},
+
+  data() {
+    return {
+      client: "",
+      description_en: "",
+      description_es: ""
+    }
+  },
+  async created() {
+    this.getDetailsSurvey();
+  },
 
   props:{
     isPageStart : {
@@ -44,7 +53,13 @@ export default {
   methods:{
       startSurvey(){
             this.$router.push({name:'survey-questions'})
-      }
+      },
+      async getDetailsSurvey() {
+      const data = await Service.getDetailsSurvey();
+      this.client = data.client;
+      this.description_es =  data.description_es.replace('@1', this.client);
+      this.description_en = data.description_en.replace('@1', this.client);
+      },
     },
 
   

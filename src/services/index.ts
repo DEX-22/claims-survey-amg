@@ -15,23 +15,27 @@ class Service {
       }
     }
   }
-    async getQuestions(body : ValidateAccessI) {
-      const {data} = await amgApi.post("/survey/get-details-claim-survey", body);
+    async getDetailsSurvey() {
+      const client = await this.validateAccess({id:localStorage.getItem('token') || ""})
+      const param = {id: client.id}
+      
+      const {data} = await amgApi.post("/survey/get-details-claim-survey", param);
 
       const questions: any = [] 
 
-      data.forEach(el => {
-
+      JSON.parse(data[0].survey_questions_json).forEach(el => {
         const element = {...el,
           rate : null,
           question_id: el.id
         }
-
-          questions.push(element)
+        questions.push(element)
       })
 
-      return questions;
+      data[0].survey_questions_json = questions
+
+      return  data[0];
     }
+
     async sendSurvey(body: SurveyI){
      
         const {data} = await amgApi.post("/survey/save-answers", body);

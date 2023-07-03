@@ -60,9 +60,8 @@ export default {
     },
     
     async getQuestions() {
-      const infoClient = await this.infoLS();
-      const param = {id: infoClient.id}
-      this.listQuestions = JSON.parse(localStorage.getItem('questionDetails')) || await Service.getQuestions(param);
+      const data = await Service.getDetailsSurvey();
+      this.listQuestions = JSON.parse(localStorage.getItem('questionDetails')) || data.survey_questions_json;
     },
 
     async sendSurvey(){
