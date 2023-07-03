@@ -17,7 +17,7 @@ class Service {
   }
     async getDetailsSurvey() {
       const client = await this.validateAccess({id:localStorage.getItem('token') || ""})
-      const param = {id: client.id}
+      const param = {id: client.survey_id}
       
       const {data} = await amgApi.post("/survey/get-details-claim-survey", param);
 
@@ -37,9 +37,11 @@ class Service {
     }
 
     async sendSurvey(body: SurveyI){
-     
+      
         const {data} = await amgApi.post("/survey/save-answers", body);
+        localStorage.removeItem('questionDetails');
         return data;
+
       
     }
 }
