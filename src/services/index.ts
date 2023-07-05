@@ -17,7 +17,7 @@ class Service {
   }
     async getDetailsSurvey() {
       const client = await this.validateAccess({id:localStorage.getItem('token') || ""})
-      const param = {id: client.survey_id}
+      const param = {id: client.id}
       
       const {data} = await amgApi.post("/survey/get-details-claim-survey", param);
 
