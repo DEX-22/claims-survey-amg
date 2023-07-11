@@ -1,4 +1,3 @@
-import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 
 //types
@@ -8,20 +7,20 @@ import type { AuthI } from '@/types'
 
 const state = () => {
     return {
-        token: "",
+        idClaim: "",
 
     }
 
 }
 const actions: AuthI = {
-    setToken(token: string){
-        this.token = token
+    setIdClaim(idClaim: string){
+        this.idClaim = idClaim
     }
 
 }
 
 const getters = {
-    isLogged: ({token}:{token:string}) => !!token,
+    getIdClaim: ({idClaim}:{idClaim:string}) => idClaim,
     
 }
 

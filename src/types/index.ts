@@ -26,9 +26,9 @@ export interface QuestionI{
 }
 export interface AuthI{
   state?:()=>{
-    token:string
+    idClaim:string
   },
-  setToken?: (token:string)=>void,
+  setIdClaim?: (idClaim:string)=>void,
 
 }
 export interface SurveyViewsI{

@@ -1,12 +1,16 @@
 import { type ValidateAccessI, type SurveyI } from '@/types/index';
 import amgApi from './axios';
-
+import  { authStore } from '@/stores/auth.store';
 
 class Service {
-
+  
   async validateAccess(body : ValidateAccessI) {
     try{
       const {data} = await amgApi.post("/survey/validate-access", body);
+      
+      const auth = authStore();
+
+      auth.setIdClaim(data.id);
       return data;
     }catch(e){
       return {
@@ -15,10 +19,10 @@ class Service {
       }
     }
   }
-    async getDetailsSurvey() {
-      const client = await this.validateAccess({id:localStorage.getItem('token') || ""})
-      const param = {id: client.id}
-      
+  async getDetailsSurvey() {
+    const auth = authStore();
+    const idClaim = auth.getIdClaim;
+      const param = {id: idClaim}
       const {data} = await amgApi.post("/survey/get-details-claim-survey", param);
 
       const questions: any = [] 

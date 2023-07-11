@@ -77,14 +77,7 @@ export default {
 @media (max-width: 364px) {
   .header__title{
   font-size: 14px;
-  /* font-weight: bold; */
-}
-
-
-.header__grid{
-  color: red;
-}
-
+  }
 }
 
 .header {
